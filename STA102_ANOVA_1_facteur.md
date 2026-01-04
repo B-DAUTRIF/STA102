@@ -256,7 +256,7 @@ $$
 
 Remarque : dans ce modèle on a un problème d’identification, car $rang(X) = k < k +1$ (la première colonne de X étant égale à la somme des autres colonnes) lorsqu’on à (k + 1) paramètres inconnus à estimer.
 
-Les **contraintes** que nous devons appliquer sont de deux types : 
+Les **contraintes** que nous pouvons appliquer sont de deux types : 
 
 - Contraintes appliquées à la somme des effets : 
 
