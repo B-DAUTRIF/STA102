@@ -83,18 +83,7 @@ $$\mathcal{y}=X\beta +\epsilon$$
 Avec :
 
 $$
-X =
-\begin{pmatrix}
-1 & x_{11} & \cdots & x_{1p} \\
-1 & x_{21} & \cdots & x_{2p} \\
-\vdots & \vdots &        & \vdots \\
-1 & x_{n1} & \cdots & x_{np}
-\end{pmatrix}
-$$
-
-$$
-y
-=
+y=
 \begin{pmatrix}
 y_1 \\
 y_2 \\
@@ -102,8 +91,7 @@ y_2 \\
 y_n
 \end{pmatrix}
 \quad
-X
-=
+X=
 \begin{pmatrix}
 1 & x_{11} & \cdots & x_{1p} \\
 1 & x_{21} & \cdots & x_{2p} \\
@@ -111,8 +99,7 @@ X
 1 & x_{n1} & \cdots & x_{np}
 \end{pmatrix}
 \quad
-\beta
-=
+\beta=
 \begin{pmatrix}
 \beta_0 \\
 \beta_1 \\
@@ -120,8 +107,7 @@ X
 \beta_p
 \end{pmatrix}
 \quad
-\varepsilon
-=
+\varepsilon=
 \begin{pmatrix}
 \varepsilon_1 \\
 \varepsilon_2 \\
@@ -676,6 +662,7 @@ $$\Sigma_{k=1}^{K}Rang(A_{k})=n \ \Rightarrow \ \forall i \neq j : \left(Q_{j} \
 **Remarque :** 
 
 $$x \sim \mathcal{N}(0\ ; \ \sigma^{2}I) \ \Rightarrow \ x^{T}x \sim \sigma^{2}\chi^{2}_{n}$$
+
 
 
 
