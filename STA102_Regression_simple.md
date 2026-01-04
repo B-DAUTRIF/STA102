@@ -811,7 +811,15 @@ $$
 $H_{0} \ : \ y_{i}=\alpha +\epsilon_{i}$ (modèle nul) est le vrai modèle.                
 $H_{1} \ : \ y_{i}=\alpha +\epsilon_{i}$ '(modèle nul) n'est pas le vrai modèle.                
 
-**Rappel :** $\frac{\sum_{i=1}^{n}(Y_{i}^{*}-\bar{Y}_{i})^{2}}{\sigma^{2}}=\frac{SCE}{\sigma^{2}} \quad \sim_{H_{0}} \quad \chi_{1}^{2}$
+**Rappel :** $\frac{\sum_{i=1}^{n}(Y_{i}^{*}-\bar Y_{i})^{2}}{\sigma^{2}}=\frac{SCE}{\sigma^{2}} \quad \sim_{H_{0}} \quad \chi_{1}^{2}$
+
+$$
+\frac{\sum_{i=1}^{n} (Y_i^{*} - \bar{Y})^{2}}{\sigma^{2}}
+=
+\frac{\mathrm{SCE}}{\sigma^{2}}
+\;\sim_{H_0}\;
+\chi^2_{1}
+$$
 
 On démontre également que $SCE \perp SCR$
 
