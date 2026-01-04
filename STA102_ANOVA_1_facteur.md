@@ -7,7 +7,7 @@ output: html_notebook
 
 Etude de l'influence d'un ou plusieurs facteurs sur la moyenne $\mu$ d'une variable quantitative. Deux optiques possibles : 
 
-- Expliquer une variable quantitative $Y$ au moyen d'un facteur à $K$ modélités, appelés des niveaux.
+- Expliquer une variable quantitative $Y$ au moyen d'un facteur à $K$ modalités, appelés niveaux.
 
 - Comparer des populations ou différentes conditions expérimentales.
 
