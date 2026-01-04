@@ -410,7 +410,7 @@ Donc la droite passe par le point $(\bar{X} \ ; \ \bar{Y})$.
 On a également : 
 
 $$Y − E[ \ Y \ ] = α + βX + ϵ − [ \ α + βE(X \ ]] = β [ \ X − E(X) \ ] + \epsilon$$
-$$E[\ (Y-E[\ Y\ ])(X-E[\ X\ ])\ ]=\beta E[\ (X-E[\ X\ ])^{3}\ ]+E[\ \epsilon(X-E[\ X\ ])\ ]$$
+$$E[\ (Y-E[\ Y\ ])(X-E[\ X\ ])\ ]=\beta E[\ (X-E[\ X\ ])^{2}\ ]+E[\ \epsilon(X-E[\ X\ ])\ ]$$
 
 Sachant que : 
 
@@ -937,6 +937,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
