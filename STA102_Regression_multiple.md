@@ -76,7 +76,7 @@ corrplot(cor(X[,-1]))
 
 ### Ecriture matricielle :
 
-Le modèle peut maintenant s'écrire de la façon suivante :
+D'un point de vue matricil le modèle peut s'écrire de la façon suivante :
 
 $$\mathcal{y}=X\beta +\epsilon$$
 
@@ -626,6 +626,7 @@ $$\Sigma_{k=1}^{K}Rang(A_{k})=n \ \Rightarrow \ \forall i \neq j : \left(Q_{j} \
 **Remarque :** 
 
 $$x \sim \mathcal{N}(0\ ; \ \sigma^{2}I) \ \Rightarrow \ x^{T}x \sim \sigma^{2}\chi^{2}_{n}$$
+
 
 
 
