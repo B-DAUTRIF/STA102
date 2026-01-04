@@ -353,13 +353,13 @@ On sait que :
 - $Y \perp X \ \Rightarrow\ r=0$       
 - $Y \perp X \ \Leftrightarrow\ P(Y=y)=P(Y=y \ | \ X=x)$       
 
-Pour être moins restrictifs, on travail avec $E[\ Y|X\ ]$ afin de savoir si $Y$ dépend **en moyenne** de $X$.
+Pour être moins restrictif, on travail avec $E[\ Y|X\ ]$ afin de savoir si $Y$ dépend **en moyenne** de $X$.
 
 #### Rapport de corrélation : 
 
 - si $Y$ dépend en moyenne de $X$, alors il existe un **lien fonctionnel** du type : $Y=f(X)$.      
 - On démontre que : $E[E[\ Y|X\ ]]=Y$       
-- On démontre que : $V[\ Y|X\ ]=V[E[\ Y|X\ ]]+E[V[\ Y|X\ ]]+$       
+- On démontre que : $V[\ Y|X\ ]=V[E[\ Y|X\ ]]+E[V[\ Y|X\ ]]$       
 
 On déduit de ces observations le **rapport de corrélation** :
 
@@ -933,6 +933,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
