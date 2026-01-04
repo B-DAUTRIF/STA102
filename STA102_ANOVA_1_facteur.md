@@ -23,11 +23,13 @@ Soit $K$ échantillons de taille $\{n_{1},...,n_{k}\}$ (cf. partition de la popu
 
 ### Modélisation : 
 
+#### Modèle 1 :
+
 $$Y_{ij}=\mu_{i} + \epsilon_{ij} \quad ; \quad i\in[1,...,k], j\in[1,...,n_{i}]$$
 
 Avec : $\mu_{i}$ la **moyenne théorique** (ou **effet**) de la variable à expliquer dans le groupe $i$.
 
-Seconde modélisation :
+#### Modèle 2 :
 
 On décompose $\mu$ afin de mettre en évidence un éventuel effet global des effets marginaux :
 
