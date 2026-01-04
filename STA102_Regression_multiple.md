@@ -198,7 +198,7 @@ Et $V[ \ b \ ]$, la matrice de covariance de $b$ :
 $$V[ \ b \ ]=V[ \ Ay \ ]=A^{T} \ V[ \ y \ ] \ A=\sigma^{2}A \ A^{T}$$
 $$=\sigma^{2}(X^{T}X)^{-1}X^{T}X(X^{T}X)^{-1}=\sigma^{2}(X^{T}X)^{-1}$$
 
-Parmi tous les estimateurs lin´eaires non biais´es de β, b est l’estimateur de variance minimale (*théorème de Gauss-Markov*).
+Parmi tous les estimateurs linéaires non biaisés de β, b est l’estimateur de variance minimale (*théorème de Gauss-Markov*).
 
 ## Matrices caractéristiques :
 
@@ -662,6 +662,7 @@ $$\Sigma_{k=1}^{K}Rang(A_{k})=n \ \Rightarrow \ \forall i \neq j : \left(Q_{j} \
 **Remarque :** 
 
 $$x \sim \mathcal{N}(0\ ; \ \sigma^{2}I) \ \Rightarrow \ x^{T}x \sim \sigma^{2}\chi^{2}_{n}$$
+
 
 
 
