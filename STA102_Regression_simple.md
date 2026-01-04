@@ -400,9 +400,11 @@ Avec $\epsilon$, le résidu aléatoire tel que :
 #### Régression linéaire : 
 
 $$E[\ Y|X \ ]=\alpha+X\beta \ \ \Longrightarrow \ \ Y= \alpha+X\beta + \epsilon$$
+
 Egalement : 
 
 $$E[\ Y \ ] = E [E(Y |X)] \ \ \Longrightarrow \ \ E[\ Y \ ] = E[\ α + βX \ ] = α + βE[\ X \ ]$$
+
 Donc la droite passe par le point $(\bar{X} \ ; \ \bar{Y})$. 
 
 On a également : 
@@ -935,6 +937,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
