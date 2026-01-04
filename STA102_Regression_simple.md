@@ -854,10 +854,10 @@ $$
 \frac{e_{i}}{\hat{\sigma}\sqrt{1-h_{i}}}
 $$
 
-- Studentisés (studentisés externe) : Calcul de la variance sans utiliser l'observation $i$. Si on suppose vrai l'**hypothèse de normalité**, on a alors :         
+- Studentisés (studentisés externe) : Calcul de la variance sans utiliser l'observation $i$. Si on suppose vrai l'**hypothèse de normalité**. alors :         
 
 $$
-\frac{e_{i}}{\hat{\sigma_{(-i)}}\sqrt{1-h_{i}}} \quad  \sim \quad \mathcal{T}_{n-2}
+\frac{e_{i}}{\hat{\sigma}_{(-i)}\sqrt{1-h_{i}}} \quad  \sim \quad \mathcal{T}_{n-2}
 $$
 
 #### Graphe des résidus :
@@ -937,6 +937,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
