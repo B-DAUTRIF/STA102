@@ -282,9 +282,12 @@ $$
 Avec : 
 
 $$
-SCE=\sum^{n}_{i=1}(\hat{y}_{i}-\bar{y}_{i})^{2}\\
-SCR=\sum^{n}_{i=1}(y_{i}-\hat{y}_{i})^{2}$$
+SCE=\sum^{n}_{i=1}(\hat{y}_{i}-\bar{y}_{i})^{2}
+$$
 
+$$
+SCR=\sum^{n}_{i=1}(y_{i}-\hat{y}_{i})^{2}$$
+$$
 ```{r Affichage des parametres du modele}
 anova(modele)
 predict(modele,interval="confidence",level=0.95)
@@ -925,6 +928,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
