@@ -384,6 +384,7 @@ On démontre que $E[\ (Y − f(X))^{2}]$ est minimale pour $f(X)=E[ \ Y |X \ ]$.
 Soit la **fonction de régression** $f$ : 
 
 $$f : X \rightarrow E[ \ Y |X=x \ ]$$
+
 Alors : 
 
 $$Y = E[ \ Y |X \ ] + \epsilon$$
@@ -934,6 +935,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
