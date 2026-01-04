@@ -167,7 +167,7 @@ $$\hat{y}=a+bx=\bar{y}-b\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}-r\frac{S_{Y}}{S_{X
 Propriétés : 
 
 - La droite des moindres carrés passe par $(\bar{x} \ ; \ \bar{y})$, qui est le centre de gravité du nuage.       
-- Le signe de sa **pente** est le même que celui de $S_{XY}$.
+- Le signe de sa pente est le même que celui de $S_{XY}$.
 
 ```{r Representation graphique du modele}
 ggplot(df, aes(x=Superficie, y=Prix))+ 
@@ -925,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
