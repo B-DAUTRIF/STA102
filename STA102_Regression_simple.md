@@ -968,3 +968,4 @@ modele_df = as.data.frame(cbind(
 
 
 
+
