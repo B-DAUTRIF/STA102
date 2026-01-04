@@ -96,8 +96,6 @@ Donc :
 - $E[\ e\ ]=0$
 - $Cov(x,e)=0$
 
-Résolution : 
-
 Estimation de **A** :
 
 $$\Sigma_{i=1}^{n}(y_{i}-a -bx_{i})=\Sigma_{i=1}^{n}y_{i} -na -\Sigma^{n}_{i=1}bx_{i}=0$$
@@ -927,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
