@@ -339,7 +339,7 @@ $$
 \hat{Y}_{ij}=\hat{\mu}+\hat{\alpha}_{i}=Y_{k\ .}+Y_{i.}-Y_{k.}=Y_{i.}
 $$
 
-### Estimateur de \sigma^{2} :
+### Estimateur de $\sigma^{2}$ :
 
 Rappel : selon le modèle d'*ANOVA*, toutes les observations d'un groupe devrait approcher la même valeur. La variabilité intra-groupe est considérée comme une erreur aléatoire :
 
