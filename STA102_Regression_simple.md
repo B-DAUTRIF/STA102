@@ -813,14 +813,6 @@ $H_{1} \ : \ y_{i}=\alpha +\epsilon_{i}$ '(modèle nul) n'est pas le vrai modèl
 
 **Rappel :** $\frac{\sum_{i=1}^{n}(Y_{i}^{*}-\bar Y_{i})^{2}}{\sigma^{2}}=\frac{SCE}{\sigma^{2}} \quad \sim_{H_{0}} \quad \chi_{1}^{2}$
 
-$$
-\frac{\sum_{i=1}^{n} (Y_i^{*} - \bar{Y})^{2}}{\sigma^{2}}
-=
-\frac{\mathrm{SCE}}{\sigma^{2}}
-\;\sim_{H_0}\;
-\chi^2_{1}
-$$
-
 On démontre également que $SCE \perp SCR$
 
 On fabrique donc la statistique suivante : 
@@ -945,6 +937,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
