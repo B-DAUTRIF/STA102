@@ -827,8 +827,8 @@ Ce test s'accompange généralement d'un **tableau d'analyse de variance** :
 
 Propriétés des résidus aléatoires : 
 
-$$V[\ E_{i}\ ]=V[\ Y_{i}-[A+Bx_{i}]\ ]=V[\ Y_{i}\ ]+V[\ (A+Bx_{i})\ ]+ 2 \ Cov(Y_{i} \ ; A+Bx_{i}\ )$$
-$$= V[\ Y_{i}\ ]+V[\ (A+Bx_{i})\ ]+ 2 \ V[\ \hat{Y_{i}} \ ] = \sigma^{2}+\sigma^{2}h_{i}-2\sigma^{2}h_{i}$$
+$$V[\ E_{i}\ ]=V[\ Y_{i}-[A+Bx_{i}]\ ]=V[\ Y_{i}\ ]+V[\ (A+Bx_{i})\ ]- 2 \ Cov(Y_{i} \ ; A+Bx_{i}\ )$$
+$$= V[\ Y_{i}\ ]+V[\ (A+Bx_{i})\ ]- 2 \ V[\ \hat{Y_{i}} \ ] = \sigma^{2}+\sigma^{2}h_{i}-2\sigma^{2}h_{i}$$
 
 $$\sigma^{2}_{E_{i}}= (1-h_{i}) \ \sigma^{2}$$
 
@@ -925,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
