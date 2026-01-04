@@ -462,7 +462,7 @@ $H_{(1)} : y_{i=}\beta_{0}+\beta_{1}x_{i1}+...+\beta_{j}x_{ij}+...+\beta_{p}x_{i
 
 $$F=\frac{SCE/p}{SCR/(n-p-1)} \sim \mathcal{F_{(p \ ; \ n-p-1)}}$$
 
-*Rappel : sous* $H_{0}$ : 
+Rappel : sous $H_{0}$ : 
 
 - $SCE \sim \chi^{2}_{p}$
 - $SCR \sim \chi^{2}_{n-p-1}$
@@ -662,6 +662,7 @@ $$\Sigma_{k=1}^{K}Rang(A_{k})=n \ \Rightarrow \ \forall i \neq j : \left(Q_{j} \
 **Remarque :** 
 
 $$x \sim \mathcal{N}(0\ ; \ \sigma^{2}I) \ \Rightarrow \ x^{T}x \sim \sigma^{2}\chi^{2}_{n}$$
+
 
 
 
