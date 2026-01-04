@@ -142,7 +142,7 @@ Dérivation de $(y-X\beta)^{T}(y-X\beta)$ par $\beta$:
 
 $$\frac{\partial(y^{T}y-2\beta^{T}X^{T}y+\beta^{T}X^{T}X\beta)}{\partial\beta}=2X^{T}y-2X^{T}X\beta=2X^{T}(y-X\beta)$$
 
-Résolution :      
+Recherche d'un extrêmum :      
 
 $$\Rightarrow 2X^{T}y-2X^{T}X\beta=0$$ 
 $$X^{T}y-X^{T}X\beta=0$$
@@ -662,6 +662,7 @@ $$\Sigma_{k=1}^{K}Rang(A_{k})=n \ \Rightarrow \ \forall i \neq j : \left(Q_{j} \
 **Remarque :** 
 
 $$x \sim \mathcal{N}(0\ ; \ \sigma^{2}I) \ \Rightarrow \ x^{T}x \sim \sigma^{2}\chi^{2}_{n}$$
+
 
 
 
