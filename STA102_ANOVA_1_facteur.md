@@ -352,7 +352,7 @@ Y_{ij}\quad : \quad Y_{ij} - \hat{Y}_{ij}=Y_{ij} - Y_{i\cdot}
 $$
 
 
-- Estimateur sans biais de la variance résiduelle (\sigma^{2}) : 
+- Estimateur sans biais de la variance résiduelle ($\sigma^{2}$) : 
 
 $$
 S^{2}_{n-k}=\frac{1}{n-k}\sum^{k}_{i=1}\sum^{n_{i}}_{j=1}(Y_{ij}-Y_{i.})^{2}
