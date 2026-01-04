@@ -325,7 +325,7 @@ Propriétés :
 - La **variance empirique** des $e_{i}$ avec : 
 
 $$S^{2}_{Y|X}=\frac{1}{n}\sum^{n}_{i=1}e_{i}^{2}=\frac{1}{n}\left[ \sum^{n}_{i=1}(y_{i}-\bar{y}_{i})^{2}-2b\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})+b^{2}\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}\right] \\
-=S^{2}_{Y}-2bS_{XY}b^{2}+S^{2}_{X}
+=S^{2}_{Y}-2bS_{XY}+b^{2}S^{2}_{X}
 $$
 
 **Rappel :** 
@@ -933,6 +933,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
