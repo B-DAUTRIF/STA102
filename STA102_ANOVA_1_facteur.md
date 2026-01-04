@@ -281,7 +281,7 @@ $$
 
 - **dispositif déséquilibré :** $\forall \{i\ ; \ j\}\in k \ : \ i \neq j \Rightarrow n_{i}\neq n_{j}$ :
 
-La contrainte devient : $\sum^{k}_{j=1}n_{i}\alpha_{i}=0$
+La contrainte devient : $\sum_{j=1}^{k}n_{i}\alpha_{i}=0$
 
 - Contrainte appliquée à une modalité de référence : on estime les effets par rapport à une modalité de référence (notée ici $k$) : 
 
