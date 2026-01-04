@@ -3,6 +3,12 @@ title: "Analyse de variance (ANOVA) à 2 facteurs"
 output: html_notebook
 ---
 
+Ce bloc-note reprend le contenu du cours STA102 du Conservatoire National des Arts et Métier (CNAM) sur les modéles linéaires. Son but est de décrire les étapes d'une analyse de la variance (ANOVA) à deux facteur, en rassemblant à la fois le matériel théorique et pratique pour travailler efficacement sur des données.
+
+Ce script est destiné à un usage personnel. J'essaie au maximum qu'il puisse être utilisé tel quel pour effectuer les calculs et la production des différents résultats (matrices, vecteurs paramètres et de variance, testes statistiques) : a condition pour cela d'effectuer les changement nécessaires pour l'import de nouveaux jeux de données.
+
+Un éventuel lecteur intéressé par ce document est invité à laisser suggestions et remarques (par le biais de GitHub).
+
 ### Présentation des données :
 
 On dispose de $n$ observations sur deux variables explicatives ($X_{1} \ ; \ X{2}$) et une variable **quantitative** qu'on souhaite expliquer ($Y$) :
