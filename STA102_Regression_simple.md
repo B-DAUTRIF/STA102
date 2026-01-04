@@ -194,8 +194,8 @@ $$h_{i}=\frac{1}{n}+\frac{(x_{i}-\bar{x})^{2}}
 Propriétés : 
 
 - $h_{i}\in[\frac{1}{n}\ ;\ 1]$       
-- $h_{i}=1 \ \Rightarrow \ \{\forall \ i \neq j \ ; \ x_{i}=x_{j}\}$      
-- $h_{i}=\frac{1}{n} \ \Rightarrow \ \{\forall \ (j \neq k) \neq i \ ; \ x_{j}=x_{k} \}$
+- $h_{i}=1 \ \Rightarrow \ \{ \forall \ i \neq j \ ; \ x_{i}=x_{j} \}$      
+- $h_{i}=\frac{1}{n} \ \Rightarrow \ \{ \forall \ (j \neq k) \neq i \ ; \ x_{j}=x_{k} \}$
 - Généralement, un levier suppérieur à $4/n$ est considéré comme important
 
 **Attention :** le levier décrit un **potentiel**. Il ne décrit pas **directement** l'influence de l'observation. 
@@ -925,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
