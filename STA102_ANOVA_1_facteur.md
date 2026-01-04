@@ -319,7 +319,7 @@ $$
 
 Modèle 2 :
 
-- Contrainte : $\sum^{k}_{i=1}n_{i}\alpha_{i}=0$
+- Contrainte : $\sum_{i=1}^{k}n_{i}\alpha_{i}=0$
 
 $$
 Y=\mu+\alpha_{i}+\epsilon_{ij}
