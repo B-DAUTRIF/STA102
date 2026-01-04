@@ -811,7 +811,7 @@ $$
 $H_{0} \ : \ y_{i}=\alpha +\epsilon_{i}$ (modèle nul) est le vrai modèle.                
 $H_{1} \ : \ y_{i}=\alpha +\epsilon_{i}$ '(modèle nul) n'est pas le vrai modèle.                
 
-**Rappel :** $\frac{\sum^{n}_{i=1}(Y_{i}^{*}-\bar{Y}_{i})^{2}}{\sigma^{2}}=\frac{SCE}{\sigma^{2}} \quad \sim_{H_{0}} \quad \chi^{2}_{1}$
+**Rappel :** $\frac{\sum_{i=1}^{n}(Y_{i}^{*}-\bar{Y}_{i})^{2}}{\sigma^{2}}=\frac{SCE}{\sigma^{2}} \quad \sim_{H_{0}} \quad \chi_{1}^{2}$
 
 On démontre également que $SCE \perp SCR$
 
@@ -937,6 +937,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
