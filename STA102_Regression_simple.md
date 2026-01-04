@@ -106,7 +106,7 @@ Estimation de **B** :
 
 $$\Sigma^{n}_{i=1}x_{i}(y_{i}-a -bx_{i})=\Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y}+b\bar{x} -bx_{i})=\Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y})+b\bar{x}\Sigma^{n}_{i=1}x_{i}-b\Sigma^{n}_{i=1}x_{i}^{2}= 0$$
 $$\Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y})+bn\bar{x}^{2}-b\Sigma^{n}_{i=1}x_{i}^{2}= 0$$
-$$bn\bar{x}^{2}-b\Sigma^{n}_{i=1}x_{i}^{2}= \Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y})$$
+$$b\Sigma^{n}_{i=1}x_{i}^{2}-bn\bar{x}^{2}= \Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y})$$
 $$b(\Sigma^{n}_{i=1}x_{i}^{2}-n\bar{x}^{2})= \Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y})$$
 $$b= \frac{\Sigma^{n}_{i=1}x_{i}(y_{i}-\bar{y})}{\Sigma^{n}_{i=1}x_{i}^{2}-n\bar{x}^{2}}$$
 
@@ -156,7 +156,6 @@ s_{XY} = r \, s_X s_Y \ \Longrightarrow \
 \frac{s_{XY}}{s_X^2} = \frac{r \, s_X s_Y}{s_X^2} \ \Longrightarrow \ 
 \frac{s_{XY}}{s_X^2} = r \, \frac{s_Y}{s_X}
 $$
-
 
 $$\Rightarrow \ b=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sum_{i=1}^n x_{i}^{2}-n\bar x^{2}}=\frac{S_{XY}}{S_{X}^{2}}$$
 
@@ -925,6 +924,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
