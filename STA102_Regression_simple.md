@@ -123,7 +123,6 @@ $$
 $$
 
 et :
-pointage
 
 $$
 \sum_{i=1}^n (y_i-\bar{y})=0 \ \Rightarrow \ \sum_{i=1}^n x_{i} (y_{i}-\bar{y})
@@ -926,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
