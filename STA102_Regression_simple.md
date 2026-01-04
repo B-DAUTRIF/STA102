@@ -313,12 +313,7 @@ Propriétés :
 
 ### Propriétés des écarts résiduels :
 
-Soit l'**écart résiduel** : $e_{i}=y_{i}-\hat{y}_{i}=y_{i}-[\bar y - b (x_ i - \bar x )]$
-
-$$
-e_i = y_i - \hat{y}_i
-     = y_i - \bigl[\bar{y} + b (x_i - \bar{x})\bigr]
-$$
+Soit l'**écart résiduel** : $e_i = y_i - \hat{y}_i= y_i - \bigl[\bar{y} + b (x_i - \bar{x})\bigr]$
 
 $$
 \sum_{i=1}^{n}e_{i}=\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})=\sum_{i=1}^{n}y_{i}-n\bar{y}-b\sum_{i=1}^{n}(x_{i}-\bar{x})=n\bar{y} - n\bar{y}=0
@@ -938,6 +933,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
