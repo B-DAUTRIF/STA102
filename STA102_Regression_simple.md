@@ -364,6 +364,7 @@ Pour être moins restrictif, on travail avec $E[\ Y|X\ ]$ afin de savoir si $Y$ 
 On déduit de ces observations le **rapport de corrélation** :
 
 $$\eta^{2}_{Y|X}=\frac{V[E[\ Y|X \ ]]}{V[\ Y|X \ ]}$$
+
 Propriétés : 
 
 - $\eta \in [0 \ ; \ 1]$       
@@ -933,6 +934,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
