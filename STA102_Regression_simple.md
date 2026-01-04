@@ -158,7 +158,7 @@ s_{XY} = r \times s_X s_Y \ \Longrightarrow \
 \frac{s_{XY}}{s_X^2} = r \frac{s_Y}{s_X}
 $$
 
-$$\Rightarrow \ b=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sum_{i=1}^n x_{i}^{2}-n\bar x^{2}}=\frac{S_{XY}}{S_{X}^{2}}$$
+$$\Rightarrow \ b=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sum_{i=1}^n x_{i}^{2}-n\bar x^{2}}=\frac{S_{XY}}{S_{X}^{2}}=r\frac{s_Y}{s_X}$$
 
 #### Equation de la droite des moindres carrés :
 
@@ -925,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
