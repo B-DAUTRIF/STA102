@@ -184,7 +184,7 @@ $$b= \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}
   =\sum^{n}_{i=1}\left[\frac{(x_{i}-\bar{x})^{2}}
   {\Sigma^{2}_{i=1}(x_{i}-\bar{x})^{2}}\right]\frac{(y_{i}-\bar{y})}{(x_{i}-\bar{x})}$$
 
-Cette pente peut être interprétée comme **la moyenne pondérée des pentes des droites passant par le barycentre $(\bar{x}, \bar{y})$ du nuage des points et chaque point-observation $(x_{i}, y_{i})$.**
+Cette pente peut être interprétée comme **la moyenne pondérée des pentes des droites passant par le barycentre $(\bar{x}, \bar{y})$ du nuage et chaque point $(x_{i}, y_{i})$ individuellement.**
 
 #### Levier : 
 
@@ -925,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
