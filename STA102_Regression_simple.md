@@ -377,9 +377,9 @@ Propriétés :
 
 Soit $X$ et $Y$, formant des couples d'observations tels que : $(X \ ; \ Y)=(X_{1} \ ; \ Y_{1}),...,(X_{n} \ ; \ Y_{n})$
 
-On cherche $f$ telle que : $f(X) \approx Y \ \Leftrightarrow \ E[\ (Y-f(X))^{2}  \ ] \  \rightarrow 0$
+On cherche $f$ telle que : $f(X) \approx Y \quad \Leftrightarrow \ E[\ (Y-f(X))^{2}\ ] \quad  \rightarrow 0$
 
-On démontre que $E[ \ (Y − f(X))^{2}]$ est minimale pour $f(X)=E[ \ Y |X \ ]$.
+On démontre que $E[\ (Y − f(X))^{2}]$ est minimale pour $f(X)=E[ \ Y |X \ ]$.
 
 Soit la **fonction de régression** $f$ : 
 
@@ -934,6 +934,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
