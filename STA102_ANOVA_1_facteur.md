@@ -345,7 +345,12 @@ Rappel : selon le modèle d'*ANOVA*, toutes les observations d'un groupe devrait
 
 Conséquences : 
 
-- Résidu aléatoire pour $Y_{ij} \quad : \quad Y_{ij}-\hat{Y}_{ij}=Y_{ij}-Y_{i\cdot}$
+- Résidu aléatoire pour $Y_{ij}$ :
+
+$$
+Y_{ij}\quad : \quad Y_{ij} - \hat{Y}_{ij}=Y_{ij} - Y_{i\cdot}
+$$
+
 
 - Estimateur sans biais de la variance résiduelle (\sigma^{2}) : 
 
