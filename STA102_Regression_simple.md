@@ -69,7 +69,7 @@ Propriétés :
 
 ### Principe des moindres carrés
 
-On cherche `a approximer le nuage des points
+On cherche à approximer le nuage de points
 $(x_{i}, y_{i})$ par une droite d’équation $\hat{y} = a+bx$ de telle sorte que
 $\Sigma_{i=1}^{n}(y_{i}− \hat{y}_{i})$ soit minimale :
 
@@ -925,6 +925,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
