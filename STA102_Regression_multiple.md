@@ -210,8 +210,8 @@ $$H=X(X^{T}X)^{-1}X^{T}$$
 Propriétés :       
 - matrice de projection dans $\mathbb{R^n}$ sur le sous-espace engendré par les vecteurs représentant les variables explicatives.      
 - $H_{n\times n}$      
-- $H^{T}=H$      
-- $H^{2}=H$      
+- $H^{T}=H$ (symétrie)      
+- $H^{2}=H$ (idempotence)     
 - $Rang(H)=Rang(X)=P+1$      
 - $h_{ii}=x_{i}(X^{T}X)^{-1}x_{i}^{T}$, est le **levier** de l'observation $i$.
 
@@ -662,6 +662,7 @@ $$\Sigma_{k=1}^{K}Rang(A_{k})=n \ \Rightarrow \ \forall i \neq j : \left(Q_{j} \
 **Remarque :** 
 
 $$x \sim \mathcal{N}(0\ ; \ \sigma^{2}I) \ \Rightarrow \ x^{T}x \sim \sigma^{2}\chi^{2}_{n}$$
+
 
 
 
