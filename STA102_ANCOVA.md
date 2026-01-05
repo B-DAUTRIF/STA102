@@ -78,9 +78,8 @@ $$y=X\theta+\epsilon$$
 Soit :
 
 $$
-\begin{aligned}
 \mathbf{y}
-&=
+=
 \begin{pmatrix}
 y_1 \\
 y_2 \\
@@ -95,9 +94,10 @@ y_n
 1 & 1 & \cdots & 0 & x_2 & Y_{21} & \cdots & 0 \\
 \vdots & \vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
 1 & 0 & \cdots & 1 & x_n & 0 & \cdots & Y_{np}
-\end{pmatrix} \\[1em]
+\end{pmatrix}
+\qquad
 \boldsymbol{\theta}
-&=
+=
 \begin{pmatrix}
 \mu \\
 \alpha_1 \\
@@ -117,7 +117,6 @@ y_n
 \vdots \\
 \varepsilon_n
 \end{pmatrix}
-\end{aligned}
 $$
 
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
