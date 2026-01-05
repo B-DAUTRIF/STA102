@@ -377,7 +377,7 @@ Propriétés :
 - $\eta = 0 \quad \Rightarrow$ indépendance en moyenne ; $E[\ Y|X \ ]$ est *certainement* constante.
 
 - $\eta = 1 \ \Rightarrow E[V[\ Y|X \ ]]$ et $E[\ Y|X \ ]$ sont *certainement* nulles.         
-- $E[\ Y|X \ ]=\alpha+X\beta$ (ex. $(X \ ; \Y)$ Gaussiens)$ \ \Rightarrow \ \eta^{2}_{Y|X}=\rho^{2}_{Y|X}$
+- $E[\ Y|X \ ]=\alpha+X\beta$ (ex. $(X \ ; \Y)$ Gaussiens)$\quad \Rightarrow \space \eta_{Y|X}^{2}=\rho_{Y|X}^{2}$
 
 ### Modèle théorique :
 
@@ -945,6 +945,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
