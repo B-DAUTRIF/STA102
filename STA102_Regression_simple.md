@@ -9,21 +9,7 @@ Ce script est destiné à un usage personnel. J'essaie au maximum qu'il puisse �
 
 Un éventuel lecteur intéressé par ce document est invité à laisser suggestions et remarques (par le biais de GitHub).
 
-```{r Chargement des librairies}
-# install.packages("olsrr")
-
-library(DescTools)
-library(lmtest)
-library(olsrr)
-library(ggplot2)
-library(ggfortify)
-```
-
 Chargement du jeu de données :
-
-```{r Chargement du jeu de données}
-df <- read.delim("D:/Etudes/2025_2026/STA102/Regression_simple/appartements.txt")
-```
 
 ### Contexte : 
 
@@ -37,44 +23,13 @@ Et le vecteur d'observations composé des couples :
 
 $(x_{i} \ ; \ y_{i}) \quad ; \quad i\in [1\ ;\ n]$
 
-```{r Tests statistiques sur les hypotheses du modele}
-# Recherhe d'autocorrélation :
-DurbinWatsonTest(modele, alternative = 'two.sided')
-
-# Evaluation de l'homogeneite : 
-bptest(modele)
-
-# Test de la normalite :
-shapiro.test(modele$residuals)
-```
-
 ### Modèle de régression simple : 
 
 $$Y=X\beta+\epsilon$$
 
-```{r Creation du modele}
-# Construction du modele de regresdsion :
-modele<-lm(Prix~Superficie, data=df)
-# Visualisation des resultats de la regression :
-summary(modele)
-```
-
 Représentation graphique :
 
 L'affichage du nuage de points donne une première impression sur l'existence d'une corrélation entre $X$ et $Y$ :
-
-```{r Affchage du nuage de points}
-# Graphique :
-# plot(df[2:3])
-
-# Code utilisant ggplot :
-library(ggplot2)
-g<- ggplot(df,aes(x = Superficie , y = Prix))+ geom_point()+ labs(
-x = "Superficie en m2",
-y = " Prix en milliers de Francs")
-
-g
-```
 
 #### Quantification de la force de la relation linéaire entre $X$ et $Y$ :
 
@@ -84,26 +39,9 @@ $$=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sqrt{(\Sigma^{n}_{i=
 
 Voir théorème de **König-Huygens**.      
 
-```{r Calcul du coefficient de correlation}
-# Affichage de la matrice de correlation :
-cor(df)
-
-Estimateur_cor=cor.test(df[,2],df[,3], use = "complete.obs")
-# En cas de non-normalite des des donnees, preferer la methode de 'Kendall' (test de rangs) ou 
-# 'spearman'  
-print("---------------------------------------------------")
-#Affichage des résultats du test :
-str(Estimateur_cor)
-```
-
 Propriétés : 
 
 - $r\in[-1,1]$
-
-```{r Graphique des correlations}
-# Representation graphique des correlations entre toutes les variables :
-pairs(df)
-```
 
 **Attention :**
 
@@ -119,44 +57,11 @@ $\Sigma_{i=1}^{n}(y_{i}− \hat{y}_{i})$ soit minimale :
 
 $$e_{i}=y_{i}-\hat{y_{i}}$$
 
-```{r Graphique des residus et des valeurs estimees}
-# Partitionnement de l'ecran pour l'affichage :
-split.screen(1:2)
-
-# On peut visualiser les valeurs evaluees du modele :
-screen(2) ; plot(modele$fitted.values)
-# On peut visualiser les residus du modele :
-screen(1) ; plot(modele$residuals)
-
-close.screen(all = TRUE)
-```
-
 Avec :
 
 $$Min(\Sigma_{i=1}^{n}y_{i}-\hat{y_{i}})^{2}$$
 
 ### Détermination des coefficients : 
-
-```{r Affichage des coefficients du modele lineaire}
-# coefficients du modele :
-modele$coefficients
-confint(modele)
-# autres fonctions d'affichage des parametres :
-summary(modele)
-
-# Analyse de variance sur les variables du modele :
-# A FAIRE : ecrire le lien entre test de Fisher et Test de Student dans le cas d'une regression simple.
-anova(modele)
-
-# Affichage des valeurs predites par le modele avec leurs intervalles de confiance :
-predict(modele,interval="confidence",level=0.95)
-
-# Ajout des colonnes au jeu de donnees :
-modele_df = as.data.frame(cbind(
-  df,
-  predict(modele, interval = "confidence", level = 0.95)
-))
-```
 
 Soit : 
 
@@ -241,22 +146,10 @@ $$\Rightarrow \ b=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sum_{
 
 $$\hat{y}=a+bx=\bar{y}-b\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}-r\frac{S_{Y}}{S_{X}}\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}+r\frac{S_{Y}}{S_{X}}(x-\bar{x})$$
 
-```{r Graphique droite des moindres carress avec IC}
-ggplot(df, aes(x=Superficie, y=Prix))+ 
-  geom_point()+
-  geom_smooth(method=lm, se=T)
-```
-
 Propriétés : 
 
 - La droite des moindres carrés passe par $(\bar{x} \ ; \ \bar{y})$, qui est le centre de gravité du nuage.       
 - Le signe de sa pente est le même que celui de $S_{XY}$.
-
-```{r Representation graphique du modele}
-ggplot(df, aes(x=Superficie, y=Prix))+ 
-  geom_point()+
-  geom_smooth(method=lm, se=T)
-```
 
 ### Contribution de chaque observation :
 
@@ -283,46 +176,7 @@ Propriétés :
 
 **Attention :** le levier décrit un **potentiel**. Il ne décrit pas **directement** l'influence de l'observation. 
 
-```{r Recherche de valeurs atypiques}
-autoplot(
-  modele,
-  which = 3,
-  ncol = 1,
-  label.size = 3,
-  label.hjust = -0.8,
-  label.n = 6
-) +
-  aes(.fitted, .stdresid) + labs(x = "fitted values", y = "standardized residuals") +
-  ggtitle("")
-
-# Graphique basique des leviers :
-plot(hatvalues(modele))
-
-# Version amélioree du graphique des leviers :
-ggplot(modele, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blue") +
-  labs(x = "Observation", y = "Leverage") + geom_text(
-    label = rownames(df),
-    check_overlap = T,
-    vjust = -0.8,
-    size = 3
-  ) + geom_hline(yintercept = 4 / nrow(df),
-                 colour = "red")
-
-# Graphique pour la distznce de cook :  
-ols_plot_cooksd_chart(modele)
- 
-
-ols_plot_dfbetas(modele)
-ols_plot_dffits(modele)
-ols_plot_resid_lev(modele)
-```
-
 ### Résidus et qualité d'ajustement : 
-
-```{r Graphiques d evaluation du modele}
-# Commande rapide pour acceder aux principaux graphiques du modele :
-plot(modele)
-```
 
 #### Décomposition de la variation totale :
 
@@ -361,11 +215,6 @@ $$
 SCR=\sum^{n}_{i=1}(y_{i}-\hat{y}_{i})^{2}$$
 $$
 
-```{r Affichage des parametres du modele}
-anova(modele)
-predict(modele,interval="confidence",level=0.95)
-```
-
 #### Coefficient de détermination : 
 
 $$
@@ -386,28 +235,6 @@ Soit l'**écart résiduel** : $e_i = y_i - \hat{y}_i= y_i - \bigl[\bar{y} + b (x
 $$
 \sum_{i=1}^{n}e_{i}=\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})=\sum_{i=1}^{n}y_{i}-n\bar{y}-b\sum_{i=1}^{n}(x_{i}-\bar{x})=n\bar{y} - n\bar{y}=0
 $$
-
-```{r Graphiques pour etude des residus}
-# Residus VS estimations :
-autoplot(
-  modele,
-  which = 1,
-  ncol = 1,
-  label.size = 3,
-  label.hjust = -0.8,
-  label.n = 6
-)
-
-# QQplot :
-autoplot(
-  modele,
-  which = 2,
-  ncol = 1,
-  label.size = 3,
-  label.hjust = -0.8,
-  label.n = 6
-)
-```
 
 Propriétés : 
 
@@ -547,10 +374,6 @@ $$\rho^{2}=\eta^{2}_{Y|X}$$
 
 ### Modèle linéaire :
 
-```{r Creation du modele}
-modele=lm(Prix~Superficie, data = df)
-```
-
 *Les résultats obtenus jusqu'ici s'appliquent même si X n'est pas aléatoire mais contrôlée par l'expérimentateur*.
 
 $$
@@ -572,16 +395,6 @@ Implications de l'hypothèse de normalité des résidus :
 - $\forall x_{i} \ ; A \sim \mathcal{N}\left(\alpha \ ; \ \sigma^{2}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{nS^{2}_{X}}\right)\right)$                
 - $\forall x_{i} \ ; B \sim \mathcal{N}\left(\beta \ ; \ \frac{\sigma^{2}}{nS^{2}_{X}}\right)$  
 
-```{r Evaluation des hypotheses du modele}
-# Recherhe d'autocorrélation :
-DurbinWatsonTest(modele, alternative = 'two.sided')
-
-# Evaluation de l'homogeneite : 
-bptest(modele)
-
-# Test de la normalite :
-shapiro.test(modele$residuals)
-```
 ### Aspects inférentiels de la régression linéaire :
 
 En partant du modèle :
@@ -811,19 +624,6 @@ $$
 y_{0}=\alpha+\beta x_{0} +\epsilon_{0}
 $$
 
-```{r Interval de prediction}
-# Construction d'un jeu de donnes specifique :
-PI = as.data.frame(cbind(Prix = df$Prix, Superficie = df$Superficie,
-predict(modele,interval="prediction")))
-
-# Fonction d'affichage de la droite de regression + IC + IP :
-ggplot(PI, aes(x=Superficie, y=Prix))+
-geom_line(aes(y=lwr), color = "red", linetype = "dashed")+
-geom_line(aes(y=upr), color = "red", linetype = "dashed")+
-geom_point()+geom_smooth(method=lm, se=T) + geom_text(label = row.names(df),
-vjust = - 1, check_overlap = TRUE, size = 3)
-```
-
 **Rappel :** $y_{0}$ et $\epsilon_{0}$ sont des variables aléatoires.
 
 Soit $y^{*}$, la prévision naturelle de $Y$ :
@@ -861,17 +661,6 @@ $$\frac{Y_{0}-\hat{Y}^{\*}_{0}}{S_{n-2}\sqrt{1+h_{0}}} \sim \mathcal{T}_{n-2}$$
 $$IC_{1-\gamma} \ (Y_{0}-\hat{Y^{\*}}_{0})=IC_{1-\gamma} \ [\ Y|x_{0}\ ]=\left[\ \hat{Y^{\*}}_{0}-\mathcal{T}_{n-2 \ ; \ (1-\gamma/2)} \times S_{n-2}\sqrt{1+h_{0}} \ ; \ \hat{Y^{\*}}_{0}+\mathcal{T}_{n-2 \ ; \ (1-\gamma/2)} \times S_{n-2}\sqrt{1+h_{0}}\ \right]$$
 
 Remarque : On trouve la même tendance qu'avec l'intervalle de confiance de la droite, avec un élargissement proportionnel à l'éloignement vis à vis de $\bar{x}$.
-
-```{r Interval de prediction}
-PI = as.data.frame(cbind(Prix = df$Prix, Superficie = df$Superficie,
-predict(modele,interval="prediction")))
-
-ggplot(PI, aes(x=Superficie, y=Prix))+
-geom_line(aes(y=lwr), color = "red", linetype = "dashed")+
-geom_line(aes(y=upr), color = "red", linetype = "dashed")+
-geom_point()+geom_smooth(method=lm, se=T) + geom_text(label = row.names(df),
-vjust = - 1, check_overlap = TRUE, size = 3)
-```
 
 ### Tests d'hypothèse sur les paramètres du modèle :
 
@@ -1018,7 +807,6 @@ de $\alpha$ (ou $\beta$) avec et sans l’observation. On le considère importan
 $DFFITS_{i}$ est calculés comme différence normalisée entre la valeur de l’estimation de
 $E(Y |X = xi)$ avec et sans l’observation. On le considère important si $|DFFITS| >2\sqrt{2/n}$.
 
-
 ### Références :
 
 [1] Gilbert Saporta. Probabilités, analyse des données et statistique. Editions Technip, 2006.
@@ -1028,16 +816,6 @@ $E(Y |X = xi)$ avec et sans l’observation. On le considère important si $|DFF
 [3] Giorgio Russolillo. STA102 : La régression Linéaire Simple (présentation ppt)
 
 [4] Michel Lejeune. Statistique - La théorie et ses applications. Springer-Verlag. 35
-
-
-```{r }
-confint(modele)
-
-modele_df = as.data.frame(cbind(
-  df,
-  predict(modele, interval = "confidence", level = 0.95)
-))
-```
 
 
 
