@@ -25,7 +25,6 @@ Chargement du jeu de données :
 df <- read.delim("D:/Etudes/2025_2026/STA102/Regression_simple/appartements.txt")
 ```
 
-
 ### Contexte : 
 
 Soit $Y$ une variable **quantitative** (à expliquer) et $X$ une variable explicative :
@@ -1040,6 +1039,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
