@@ -93,6 +93,7 @@ Estimateur_cor=cor.test(df[,2],df[,3], use = "complete.obs")
 # En cas de non-normalite des des donnees, preferer la methode de 'Kendall' (test de rangs) ou 
 # 'spearman'  
 print("---------------------------------------------------")
+#Affichage des résultats du test :
 str(Estimateur_cor)
 ```
 
@@ -101,7 +102,7 @@ Propriétés :
 - $r\in[-1,1]$
 
 ```{r Graphique des correlations}
-# Representation graphique des correlations entre variables :
+# Representation graphique des correlations entre toutes les variables :
 pairs(df)
 ```
 
@@ -318,6 +319,11 @@ ols_plot_resid_lev(modele)
 ```
 
 ### Résidus et qualité d'ajustement : 
+
+```{r Graphiques d evaluation du modele}
+# Commande rapide pour acceder aux principaux graphiques du modele :
+plot(modele)
+```
 
 #### Décomposition de la variation totale :
 
@@ -1033,6 +1039,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
