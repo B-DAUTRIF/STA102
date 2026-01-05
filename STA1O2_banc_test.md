@@ -241,7 +241,6 @@ s_{XY} = r \, s_X s_Y \ \Longrightarrow \
 \frac{s_{XY}}{s_X^2} = r \, \frac{s_Y}{s_X}
 $$
 
-
 $$\Rightarrow \ b=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sum_{i=1}^n x_{i}^{2}-n\bar x^{2}}=\frac{S_{XY}}{S_{X}^{2}}$$
 
 #### Equation de la droite des moindres carrés :
@@ -559,6 +558,7 @@ bptest(modele)
 # Test de la normalite :
 shapiro.test(modele$residuals)
 ```
+
 ### Aspects inférentiels de la régression linéaire :
 
 En partant du modèle :
@@ -1033,6 +1033,7 @@ $E(Y |X = xi)$ avec et sans l’observation. On le considère important si $|DFF
 [3] Giorgio Russolillo. STA102 : La régression Linéaire Simple (présentation ppt)
 
 [4] Michel Lejeune. Statistique - La théorie et ses applications. Springer-Verlag. 35
+
 
 
 
