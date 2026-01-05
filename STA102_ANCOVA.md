@@ -85,7 +85,7 @@ y_2 \\
 \vdots \\
 y_n
 \end{pmatrix}
-||
+\quad
 X =
 \begin{pmatrix}
 1 & 0 & \cdots & 1 & x_1 & 0 & \cdots & Y_{1p} \\
@@ -93,7 +93,7 @@ X =
 \vdots & \vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
 1 & 0 & \cdots & 1 & x_n & 0 & \cdots & Y_{np}
 \end{pmatrix}
-||
+\quad
 \theta =
 \begin{pmatrix}
 \mu \\
@@ -105,7 +105,7 @@ X =
 \vdots \\
 \gamma_p
 \end{pmatrix}
-||
+\quad
 \varepsilon =
 \begin{pmatrix}
 \varepsilon_1 \\
