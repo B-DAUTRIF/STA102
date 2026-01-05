@@ -643,7 +643,7 @@ $$
 
 Où le numérateur suit une loi normale ($\mathcal{N}(0 \ ; \ 1)$), et le dénominateur est la racine d'une loi du $\chi^{2}$ divisée par son degrés de liberté $(n-2)$.
 
-De la même façon, si on note : $S_{B}=\frac{S_{n-2}}{\sqrt{\sum^{n}_{i=1}(x_{i}-\bar{x})^{2}}}$
+De la même façon, si on note : $S_{B}=\frac{S_{n-2}}{\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}}$
 
 Alors : 
 
@@ -943,6 +943,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
