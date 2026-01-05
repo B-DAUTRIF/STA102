@@ -77,7 +77,7 @@ Remarque : $\gamma_{ij}$ peut être considéré comme terme d'interaction entre 
 $$y=X\theta+\epsilon$$
 Soit :
 
-$$
+```math
 \mathbf y
 =
 \begin{pmatrix}
@@ -90,10 +90,10 @@ y_n
 \mathbf X
 =
 \begin{pmatrix}
-1 & 0 & \cdots & 1 & x_{1} & 0 & \cdots & Y_{ij} \\
-1 & 1 & \cdots & 0 & x_{2} & Y_{ij} & \cdots & 0  \\
+1 & 0 & \cdots & 1 & x_{1} & 0 & \cdots & Y_{1p} \\
+1 & 1 & \cdots & 0 & x_{2} & Y_{2,1} & \cdots & 0  \\
 \vdots & \vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
-1 & 0 & \cdots & 1 & x_{n_{i}} & 0 & \cdots &  Y_{n_{i}p} \\
+1 & 0 & \cdots & 1 & x_{n_i} & 0 & \cdots &  Y_{n_i p} \\
 \end{pmatrix}
 \qquad
 \boldsymbol\theta
@@ -117,7 +117,8 @@ y_n
 \vdots\\
 \varepsilon_n
 \end{pmatrix}
-$$
+```
+
 
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
 
