@@ -75,10 +75,9 @@ Remarque : $\gamma_{ij}$ peut être considéré comme terme d'interaction entre 
 #### Ecriture matricielle :
 
 $$y=X\theta+\epsilon$$
-
 Soit :
 
-```math
+$$
 \mathbf y
 =
 \begin{pmatrix}
@@ -91,10 +90,10 @@ y_n
 \mathbf X
 =
 \begin{pmatrix}
-1 & 0 & \cdots & 1 & x_{1} & 0 & \cdots & Y_{1p} \\
-1 & 1 & \cdots & 0 & x_{2} & Y_{2,1} & \cdots & 0  \\
+1 & 0 & \cdots & 1 & x_{1} & 0 & \cdots & Y_{ij} \\
+1 & 1 & \cdots & 0 & x_{2} & Y_{ij} & \cdots & 0  \\
 \vdots & \vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
-1 & 0 & \cdots & 1 & x_{n_i} & 0 & \cdots &  Y_{n_i p} \\
+1 & 0 & \cdots & 1 & x_{n_{i}} & 0 & \cdots &  Y_{n_{i}p} \\
 \end{pmatrix}
 \qquad
 \boldsymbol\theta
@@ -118,7 +117,7 @@ y_n
 \vdots\\
 \varepsilon_n
 \end{pmatrix}
-```
+$$
 
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
 
@@ -159,24 +158,132 @@ On note sa réalisation $\hat{\sigma}^{2}$.
 
 $$SCM=SCM+SCR$$
 
+$$SCT=\sum_{i=1}^{p}\sum_{j=1}^{n_{i}}(Y_{ij}-Y_{..})^{2}$$
 
+$$SCR=\sum_{i=1}^{p}\sum_{j=1}^{n_{i}}(Y_{ij}-\hat{Y}_{ij})^{2}$$
 
+$$SCM=\sum_{i=1}^{p}\sum_{j=1}^{n_{i}}(\hat{Y}_{ij}-Y_{..})^{2}$$
 
+On produit le tableau d'analyse de la variance :
 
+| Source  | Degrés de liberté | Somme des carrés | Carrés moyens |
+|--------|------------------|-----------------|---------------|
+| Modèle | $2p - 1$ | $\displaystyle \mathrm{SCM} = \sum_{i=1}^{p}\sum_{j=1}^{n_i}\left(\hat Y_{ij} - Y_{..}\right)^2$ | $\displaystyle \frac{\mathrm{SCM}}{2p-1}$ |
+| Résidu | $n - 2p$ | $\displaystyle \mathrm{SCR} = \sum_{i=1}^{p}\sum_{j=1}^{n_i}\left(Y_{ij} - \hat Y_{ij}\right)^2$ | $\displaystyle \frac{\mathrm{SCR}}{n-2p}$ |
+| Total  | $n - 1$ | $\displaystyle \mathrm{SCT} = \sum_{i=1}^{p}\sum_{j=1}^{n_i}\left(Y_{ij} - Y_{..}\right)^2$ | $\displaystyle \frac{\mathrm{SCT}}{n-1}$ |
 
+### Test de significativité du modèle complet : 
 
+- $H_{0} \space : \space \{Y_{ij}=\mu+\epsilon_{ij}\}$
 
+- $H_{1} \space : \space \{Y_{ij}=\mu+\alpha_{i}+\beta x_{ij}+\gamma_{i} x_{ij}+\epsilon_{ij}\}$
 
+$$F=\frac{SCM/n-(2p-1)}{SCR/(n-2p)} \sim \mathcal{F}_{(2p-1 \space ; \space n-2p)}$$
 
+### Sous-modèles du modèle complet : 
 
+Les modèles ci-dessous sont **successivement imbriqués** :
 
+#### Modèle nul :
 
+Modèle constant où aucun effet n'est présent :
 
+$$Y_{ij}=\mu+\epsilon_{ij}$$
 
+#### Modèle A :
 
+Uniquement l'effet du facteur y est présent :
 
+$$Y_{ij}=\mu+\alpha_{i}+\epsilon_{ij}$$
 
+Remarque : Le modèle A est équivalent à une ANOVA à 1 facteur 
 
+#### Modèle B :
+
+Aucun effet du facteur n'est présent. 
+
+$$Y_{ij}=\mu+\beta x_{ij}+\epsilon_{ij}$$
+
+Remarque : Ce modèle est équivalent à une régression simple. 
+
+#### Modèle AB :
+
+On observe un effet à la fois de la covariable et du traitement : les moyennes de $Y$ dans les différentes modalités du traitement sont différentes. Cette différence reste **constante** à travers les valeurs de la covariable : **c'est le modèle de l'ANCOVA**.
+
+$$Y_{ij}=\mu+\alpha_{i}+\beta x_{ij}+\epsilon_{ij}$$
+
+### Modèle C :
+
+Où on observe une différence de l'effet du traitement selon les modalités de la covariable (et vice-versa) :
+
+$$Y_{ij}=\mu+\alpha_{i}+\beta x_{ij}+\gamma_{i} x_{ij}+\epsilon_{ij}$$
+
+### Décomposition de la somme des carrés du modèle :
+
+Hypothèse : significativité globale du modèle (invalidation du modèle nul).
+
+**Attention :** Dans un plan d'expérience non orthogonal, il est impossible en l'état de décomposer la variabilité du modèle.
+
+Plusieurs méthodes peuvent être utilisées pour obtenir les sommes des carrés :
+
+**Définition :** La **réduction** est la mesure de la différence observée dans le cas de modèles imbriqués lors du passage de l'un modèle à l'autre. 
+
+$$R(M_{1}|M_{2})=SCR_{M_{1}}-SCR_{M_{2}}$$
+
+#### Somme des carrés de type I :
+
+Construction du modèle complet par ajout sucessifs d'effets. La séquence des effets ajoutés peut être adaptée mais conditionne le modèle final, mais leur somme est égale à $SCM$.
+
+#### Somme des carrés de type III :
+
+Comparaison du modèle complet à d'autres construits par éviction successive d'un paramètre. La somme des carrés de type III est indépendante de l'ordre mais n'est pas égale à $SCM$.
+
+### Tests des effets :
+
+Soit le modèle de référence $M_{ref}$ et deux sous-modèles $M_{1}$ et $M_{2}$ tel que :
+
+$$M_{1} \subset M_{2} \subset M_{ref}$$
+
+- $H_{0} \space : \space \{SCR_{M_{1}}-SCR_{M_{2}}=0\}$
+
+- $H_{1} \space : \space \{SCR_{M_{1}}-SCR_{M_{2}}\neq 0\}$
+
+Statistique :
+
+$$\frac{(SCR_{M_{1}}-SCR_{M_{2}})/(df_{M_{1}}-df_{M_{2}})}{SCR_{M_{ref}}/df_{M_{ref}}} \sim \mathcal{F}_{(df_{M_{1}}-df_{M_{2}}\space ;\space df_{M_{ref}})}$$
+
+Remarque : Le dénominateur correspond à l'estimation de la variance résiduelle du modèle de référence. 
+
+#### Aspects pratiques : 
+
+On évalue généralement d'abord l'interaction (avec la coïncidence des somme de carrés de type I et III) : 
+
+- si l'interaction est significative on a trouvé le meilleur modèle.
+
+- sinon on teste les effets du facteur et de la coviriable indépendamment avant de les conserver.
+
+### Comparaison des moyennes :
+
+Evaluation de la significativité statistique dans les $p$ niveaux du facteur. 
+
+- Moyenne **non ajustée** : dépend de la valeur de la covariable.
+
+$$\hat{\mu}_{i.}=\hat{\mu}+\hat{\alpha}_{i}+\hat{\beta}x_{ij}+\hat{\gamma}_{i}x_{i.}$$
+
+Remarque : cette valeur est la même que celle d'un groupe présentant une valeur moyenne de covariable dans le $i^{eme}$ groupe.
+
+- Moyenne **ajusté** : réalise une comparaison des effets du facteur **à parité de la covariable**.
+
+$$\tilde{Y}_{i.}=\hat{\mu}+\hat{\alpha}_{i}+\hat{\beta}x_{ij}+\hat{\gamma}_{i}x_{..}$$
+
+Remarque : Cette approche s'avère risquée si l'interaction est significative. Il faut dans ce cas utiliser plusieurs valeurs de référence.
+
+### Références :
+
+1. Giorgio Russolillo. STA102 : Analyse de la variance à deux facteurs, CNAM.
+
+2. E. Lebarbier, S. Robin (2004). Exemples d’application du modèle linéaire Institut
+National Agronomique Paris – Grignon.
 
 
 
