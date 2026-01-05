@@ -3,7 +3,7 @@ title: "Analyse de la covariance (ANCOVA)"
 output: html_notebook
 ---
 
-Ojectif : expliquer une variable quantitative $Y$ à l'aide de plusieurs autres variables quantitatives et qualitatives, en tenant compte durant l'étude :
+Ojectif : expliquer une variable quantitative $Y$ à l'aide de plusieurs autres variables quantitatives et qualitatives, en tenant compte :
 
 - des effets des facteurs.
 
