@@ -78,8 +78,17 @@ $$y=X\theta+\epsilon$$
 Soit :
 
 $$
-\mathbf{X}
-=
+y =
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+$$
+
+$$
+X =
 \begin{pmatrix}
 1 & 0 & \cdots & 1 & x_1 & 0 & \cdots & Y_{1p} \\
 1 & 1 & \cdots & 0 & x_2 & Y_{21} & \cdots & 0 \\
@@ -87,6 +96,31 @@ $$
 1 & 0 & \cdots & 1 & x_n & 0 & \cdots & Y_{np}
 \end{pmatrix}
 $$
+
+$$
+\theta =
+\begin{pmatrix}
+\mu \\
+\alpha_1 \\
+\vdots \\
+\alpha_p \\
+\beta \\
+\gamma_1 \\
+\vdots \\
+\gamma_p
+\end{pmatrix}
+$$
+
+$$
+\varepsilon =
+\begin{pmatrix}
+\varepsilon_1 \\
+\varepsilon_2 \\
+\vdots \\
+\varepsilon_n
+\end{pmatrix}
+$$
+
 
 
 
