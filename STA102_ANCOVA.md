@@ -89,6 +89,7 @@ $$
 $$
 
 
+
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
 
 #### Contraintes d'identifibilité du modèle :
