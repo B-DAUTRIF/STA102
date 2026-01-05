@@ -467,7 +467,7 @@ $$\rho^{2}=\eta^{2}_{Y|X}$$
 modele=lm(Prix~Superficie, data = df)
 ```
 
-*Les résultats obtenus jusqu'ici s'appliquent même si $X$ n'est pas aléatoire mais contrôlée par l'expérimentateur*.
+*Les résultats obtenus jusqu'ici s'appliquent même si X n'est pas aléatoire mais contrôlée par l'expérimentateur*.
 
 $$
 \forall i : Y_{i}=\alpha + \beta x_{i} +\epsilon_{i}
@@ -945,6 +945,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
