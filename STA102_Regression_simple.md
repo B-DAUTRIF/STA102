@@ -78,7 +78,7 @@ g
 
 #### Quantification de la force de la relation linéaire entre $X$ et $Y$ :
 
-$$r=\frac{\frac{1}{n}\Sigma^{n}_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\frac{1}{n}\Sigma^{n}_{i=1}(x_{i}-\bar{x})^{2} \ \frac{1}{n}\Sigma^{n}_{i=1}(y_{i}-\bar{y})^{2}}}$$
+$$r=\frac{\frac{1}{n}\sum^{n}_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\frac{1}{n}\sum^{n}_{i=1}(x_{i}-\bar{x})^{2} \ \frac{1}{n}\sum^{n}_{i=1}(y_{i}-\bar{y})^{2}}}$$
 $$=\frac{\Sigma^{n}_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\Sigma^{n}_{i=1}(x_{i}-\bar{x})^{2} \ \Sigma^{n}_{i=1}(y_{i}-\bar{y})^{2}}}$$
 $$=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sqrt{(\Sigma^{n}_{i=1}x_{i}^{2}-n\bar{x}^{2}) \ (\Sigma^{n}_{i=1}y_{i}^{2}-n\bar{y}^{2})}}=\frac{S_{XY}}{S_{X}S_{Y}}$$
 
@@ -1038,6 +1038,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
