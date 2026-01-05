@@ -322,6 +322,7 @@ ols_plot_resid_lev(modele)
 
 ```{r Graphiques d evaluation du modele}
 # Commande rapide pour acceder aux principaux graphiques du modele :
+layout(matrix(1:4,2,2))
 plot(modele)
 ```
 
@@ -1039,6 +1040,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
