@@ -629,7 +629,7 @@ $$
 \frac{A-\alpha}{S_{A}} \sim \mathcal{T}_{n-2}
 $$
 
-Car : $S_{A}=S_{n-2}\sqrt{\frac{1}{n}+\frac{\bar{x}^{2}}{\sum^{n}_{i=1}(x_{i}-\hat{x})^{2}}}$
+Car : $S_{A}=S_{n-2}\sqrt{\frac{1}{n}+\frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i}-\hat{x})^{2}}}$
 
 $$
 \frac{A-\alpha}{S_{A}}=\frac{A-\alpha}{\sqrt{\frac{(n-2)S^{2}_{n-2}}{\sigma^{2}(n-2)}}\sigma\sqrt{\frac{1}{n}+\frac{\bar{x}^{2}}{\sum^{n}_{i=1}(x_{i}-\hat{x})^{2}}}}
@@ -943,6 +943,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
