@@ -75,6 +75,7 @@ Remarque : $\gamma_{ij}$ peut être considéré comme terme d'interaction entre 
 #### Ecriture matricielle :
 
 $$y=X\theta+\epsilon$$
+
 Soit :
 
 ```math
@@ -118,7 +119,6 @@ y_n
 \varepsilon_n
 \end{pmatrix}
 ```
-
 
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
 
