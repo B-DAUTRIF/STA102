@@ -85,9 +85,7 @@ y_2 \\
 \vdots \\
 y_n
 \end{pmatrix}
-$$
-
-$$
+||
 X =
 \begin{pmatrix}
 1 & 0 & \cdots & 1 & x_1 & 0 & \cdots & Y_{1p} \\
@@ -95,9 +93,7 @@ X =
 \vdots & \vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
 1 & 0 & \cdots & 1 & x_n & 0 & \cdots & Y_{np}
 \end{pmatrix}
-$$
-
-$$
+||
 \theta =
 \begin{pmatrix}
 \mu \\
@@ -109,9 +105,7 @@ $$
 \vdots \\
 \gamma_p
 \end{pmatrix}
-$$
-
-$$
+||
 \varepsilon =
 \begin{pmatrix}
 \varepsilon_1 \\
@@ -120,9 +114,6 @@ $$
 \varepsilon_n
 \end{pmatrix}
 $$
-
-
-
 
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
 
