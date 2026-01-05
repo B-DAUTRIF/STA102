@@ -739,7 +739,7 @@ $$
 y^{*}_{0}=a+bx_{0}
 $$
 
-On cherche $(Y_{0}-\hat{Y}_{0})$, le *résidus d'une nouvelle observation pour laquelle on dispose de $x_{0}$. On a vu qu'en $x_{0}$ :
+On cherche $( Y_{0}-\hat{Y}_{0} )$, le résidus d'une nouvelle observation pour laquelle on dispose de $x_{0}$. On a vu qu'en $x_{0}$ :
 
 $$
 \hat{Y}=A+Bx_{0} \sim \mathcal{N}(\alpha+\beta x_{0} \ ;\ \sigma^{2}\sqrt{h_{0}})
@@ -944,6 +944,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
