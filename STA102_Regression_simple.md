@@ -842,7 +842,7 @@ Ce test s'accompange généralement d'un **tableau d'analyse de variance** :
 
 - Erreur aléatoire : $\epsilon_{i}=Y_{i}-\alpha-\beta x_{i}$ (variable aléatoire)        
 - Résidus aléatoire : $E_{i}=Y_{i}-A-Bx_{i}=Y_{i}-\hat{Y}_{i}$ (estimateur)
-- Résidu observé : $e_{i}=y_{i}-\hat{y}_{i}$ (estimation de $\epsilon_{i}$)
+- Résidu observé : $e_i = y_i - \hat{y}_i$ (estimation de $\epsilon_i$)
 
 Propriétés des résidus aléatoires : 
 
@@ -944,6 +944,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
