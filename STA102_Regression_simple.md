@@ -38,12 +38,26 @@ Et le vecteur d'observations composé des couples :
 
 $(x_{i} \ ; \ y_{i}) \quad ; \quad i\in [1\ ;\ n]$
 
+```{r Tests statistiques sur les hypotheses du modele}
+# Recherhe d'autocorrélation :
+DurbinWatsonTest(modele, alternative = 'two.sided')
+
+# Evaluation de l'homogeneite : 
+bptest(modele)
+
+# Test de la normalite :
+shapiro.test(modele$residuals)
+```
+
 ### Modèle de régression simple : 
 
 $$Y=X\beta+\epsilon$$
 
-```{r Modele}
-modele=lm(Prix~Superficie, data = df)
+```{r Creation du modele}
+# Construction du modele de regresdsion :
+modele<-lm(Prix~Superficie, data=df)
+# Visualisation des resultats de la regression :
+summary(modele)
 ```
 
 Représentation graphique :
@@ -52,10 +66,18 @@ L'affichage du nuage de points donne une première impression sur l'existence d'
 
 ```{r Affchage du nuage de points}
 # Graphique :
-plot(df[2:3])
+# plot(df[2:3])
+
+# Code utilisant ggplot :
+library(ggplot2)
+g<- ggplot(df,aes(x = Superficie , y = Prix))+ geom_point()+ labs(
+x = "Superficie en m2",
+y = " Prix en milliers de Francs")
+
+g
 ```
 
-Quantification de la force de la relation linéaire entre $X$ et $Y$ :
+#### Quantification de la force de la relation linéaire entre $X$ et $Y$ :
 
 $$r=\frac{\frac{1}{n}\Sigma^{n}_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\frac{1}{n}\Sigma^{n}_{i=1}(x_{i}-\bar{x})^{2} \ \frac{1}{n}\Sigma^{n}_{i=1}(y_{i}-\bar{y})^{2}}}$$
 $$=\frac{\Sigma^{n}_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\Sigma^{n}_{i=1}(x_{i}-\bar{x})^{2} \ \Sigma^{n}_{i=1}(y_{i}-\bar{y})^{2}}}$$
@@ -63,9 +85,25 @@ $$=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sqrt{(\Sigma^{n}_{i=
 
 Voir théorème de **König-Huygens**.      
 
+```{r Calcul du coefficient de correlation}
+# Affichage de la matrice de correlation :
+cor(df)
+
+Estimateur_cor=cor.test(df[,2],df[,3], use = "complete.obs")
+# En cas de non-normalite des des donnees, preferer la methode de 'Kendall' (test de rangs) ou 
+# 'spearman'  
+print("---------------------------------------------------")
+str(Estimateur_cor)
+```
+
 Propriétés : 
 
 - $r\in[-1,1]$
+
+```{r Graphique des correlations}
+# Representation graphique des correlations entre variables :
+pairs(df)
+```
 
 **Attention :**
 
@@ -81,11 +119,44 @@ $\Sigma_{i=1}^{n}(y_{i}− \hat{y}_{i})$ soit minimale :
 
 $$e_{i}=y_{i}-\hat{y_{i}}$$
 
+```{r Graphique des residus et des valeurs estimees}
+# Partitionnement de l'ecran pour l'affichage :
+split.screen(1:2)
+
+# On peut visualiser les valeurs evaluees du modele :
+screen(2) ; plot(modele$fitted.values)
+# On peut visualiser les residus du modele :
+screen(1) ; plot(modele$residuals)
+
+close.screen(all = TRUE)
+```
+
 Avec :
 
 $$Min(\Sigma_{i=1}^{n}y_{i}-\hat{y_{i}})^{2}$$
 
 ### Détermination des coefficients : 
+
+```{r Affichage des coefficients du modele lineaire}
+# coefficients du modele :
+modele$coefficients
+confint(modele)
+# autres fonctions d'affichage des parametres :
+summary(modele)
+
+# Analyse de variance sur les variables du modele :
+# A FAIRE : ecrire le lien entre test de Fisher et Test de Student dans le cas d'une regression simple.
+anova(modele)
+
+# Affichage des valeurs predites par le modele avec leurs intervalles de confiance :
+predict(modele,interval="confidence",level=0.95)
+
+# Ajout des colonnes au jeu de donnees :
+modele_df = as.data.frame(cbind(
+  df,
+  predict(modele, interval = "confidence", level = 0.95)
+))
+```
 
 Soit : 
 
@@ -170,6 +241,12 @@ $$\Rightarrow \ b=\frac{\Sigma^{n}_{i=1}x_{i}y_{i} \ \  n\bar{x}\bar{y}} {\sum_{
 
 $$\hat{y}=a+bx=\bar{y}-b\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}-r\frac{S_{Y}}{S_{X}}\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}+r\frac{S_{Y}}{S_{X}}(x-\bar{x})$$
 
+```{r Graphique droite des moindres carress avec IC}
+ggplot(df, aes(x=Superficie, y=Prix))+ 
+  geom_point()+
+  geom_smooth(method=lm, se=T)
+```
+
 Propriétés : 
 
 - La droite des moindres carrés passe par $(\bar{x} \ ; \ \bar{y})$, qui est le centre de gravité du nuage.       
@@ -242,26 +319,6 @@ ols_plot_resid_lev(modele)
 
 ### Résidus et qualité d'ajustement : 
 
-```{r Etude des residus}
-autoplot(
-  modele,
-  which = 1,
-  ncol = 1,
-  label.size = 3,
-  label.hjust = -0.8,
-  label.n = 6
-)
-
-autoplot(
-  modele,
-  which = 2,
-  ncol = 1,
-  label.size = 3,
-  label.hjust = -0.8,
-  label.n = 6
-)
-```
-
 #### Décomposition de la variation totale :
 
 $$SCT=\sum^{n}_{i=1}(y_{i}-\bar{y}_{i})^{2}=\sum^{n}_{i=1}(y_{i}-\hat{y}_{i}+\hat{y}_{i}-\bar{y}_{i})^{2}= \\ 
@@ -324,6 +381,28 @@ Soit l'**écart résiduel** : $e_i = y_i - \hat{y}_i= y_i - \bigl[\bar{y} + b (x
 $$
 \sum_{i=1}^{n}e_{i}=\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})=\sum_{i=1}^{n}y_{i}-n\bar{y}-b\sum_{i=1}^{n}(x_{i}-\bar{x})=n\bar{y} - n\bar{y}=0
 $$
+
+```{r Graphiques pour etude des residus}
+# Residus VS estimations :
+autoplot(
+  modele,
+  which = 1,
+  ncol = 1,
+  label.size = 3,
+  label.hjust = -0.8,
+  label.n = 6
+)
+
+# QQplot :
+autoplot(
+  modele,
+  which = 2,
+  ncol = 1,
+  label.size = 3,
+  label.hjust = -0.8,
+  label.n = 6
+)
+```
 
 Propriétés : 
 
@@ -510,10 +589,6 @@ $$B=\frac{\sum^{n}_{i=1} (Y_{i}-\bar{Y})(x_{i}-\bar{x})}{\sum^{n}_{i=1}(x_{i}-\b
 $$A=\bar{Y}-B\bar{x}$$
 
 #### Propriétés de $A$ et $B$ :
-
-```{r Affichage des coefficients}
-summary(modele)
-```
 
 - **Linéarité** car ils sont combinaisons linéaires des $Y_{i}$ :
 
@@ -731,6 +806,19 @@ $$
 y_{0}=\alpha+\beta x_{0} +\epsilon_{0}
 $$
 
+```{r Interval de prediction}
+# Construction d'un jeu de donnes specifique :
+PI = as.data.frame(cbind(Prix = df$Prix, Superficie = df$Superficie,
+predict(modele,interval="prediction")))
+
+# Fonction d'affichage de la droite de regression + IC + IP :
+ggplot(PI, aes(x=Superficie, y=Prix))+
+geom_line(aes(y=lwr), color = "red", linetype = "dashed")+
+geom_line(aes(y=upr), color = "red", linetype = "dashed")+
+geom_point()+geom_smooth(method=lm, se=T) + geom_text(label = row.names(df),
+vjust = - 1, check_overlap = TRUE, size = 3)
+```
+
 **Rappel :** $y_{0}$ et $\epsilon_{0}$ sont des variables aléatoires.
 
 Soit $y^{*}$, la prévision naturelle de $Y$ :
@@ -945,6 +1033,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
