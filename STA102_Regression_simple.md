@@ -545,7 +545,7 @@ $$
 V[\ A\ ]=\frac{\sigma^{2}}{n}\left(1+\frac{\bar{x}}{S^{2}_{X}}\right)
 $$
 
-Où $\sigma^{2}$ est la variance des résidus : $S^{2}_{X}=\frac{1}{n}\Sigma_{i}(x_{i}-\bar{x})^{2}$
+Où $\sigma^{2}$ est la variance des résidus : $S_{X}^{2}=\frac{1}{n}\Sigma_{i}(x_{i}-\bar{x})^{2}$
 
 - **non indépendance** : $A \not\perp B$
 
@@ -943,6 +943,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
