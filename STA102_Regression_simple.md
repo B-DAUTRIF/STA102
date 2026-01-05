@@ -798,6 +798,7 @@ T_{obs}=\frac{b}{\hat{\sigma}_{B}}
 $$
 
 Egalement :        
+
 $$
 \frac{A-\alpha}{S_A} \sim \mathcal{T}_{n-2} \quad SSi \quad \alpha = \alpha_0
 $$
@@ -944,6 +945,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
