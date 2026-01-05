@@ -78,45 +78,46 @@ $$y=X\theta+\epsilon$$
 Soit :
 
 $$
-\mathbf y
-=
+\begin{aligned}
+\mathbf{y}
+&=
 \begin{pmatrix}
-y_1\\
-y_2\\
-\vdots\\
+y_1 \\
+y_2 \\
+\vdots \\
 y_n
 \end{pmatrix}
 \qquad
-\mathbf X
+\mathbf{X}
 =
 \begin{pmatrix}
-1 & 0 & \cdots & 1 & x_{1} & 0 & \cdots & Y_{ij} \\
-1 & 1 & \cdots & 0 & x_{2} & Y_{ij} & \cdots & 0  \\
+1 & 0 & \cdots & 1 & x_1 & 0 & \cdots & Y_{1p} \\
+1 & 1 & \cdots & 0 & x_2 & Y_{21} & \cdots & 0 \\
 \vdots & \vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
-1 & 0 & \cdots & 1 & x_{n_{i}} & 0 & \cdots &  Y_{n_{i}p} \\
-\end{pmatrix}
-\qquad
-\boldsymbol\theta
-=
+1 & 0 & \cdots & 1 & x_n & 0 & \cdots & Y_{np}
+\end{pmatrix} \\[1em]
+\boldsymbol{\theta}
+&=
 \begin{pmatrix}
-\mu\\
-\alpha_1\\
-\vdots\\
-\alpha_p\\
-\beta\\
-\gamma_1\\
-\vdots\\
+\mu \\
+\alpha_1 \\
+\vdots \\
+\alpha_p \\
+\beta \\
+\gamma_1 \\
+\vdots \\
 \gamma_p
 \end{pmatrix}
 \qquad
-\boldsymbol\varepsilon
+\boldsymbol{\varepsilon}
 =
 \begin{pmatrix}
-\varepsilon_1\\
-\varepsilon_2\\
-\vdots\\
+\varepsilon_1 \\
+\varepsilon_2 \\
+\vdots \\
 \varepsilon_n
 \end{pmatrix}
+\end{aligned}
 $$
 
 Avec $X$, une X matrice $n × (1 + p + q + p \times q)$ et $theta$ le vecteur ligne des coefficients ($\mu,\alpha_{i},\beta,\gamma_{i}$).
