@@ -730,6 +730,7 @@ Soit la valeur non observée $x_{0}$ et le modèle de prévision suivant :
 $$
 y_{0}=\alpha+\beta x_{0} +\epsilon_{0}
 $$
+
 **Rappel :** $y_{0}$ et $\epsilon_{0}$ sont des variables aléatoires.
 
 Soit $y^{*}$, la prévision naturelle de $Y$ :
@@ -943,6 +944,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
