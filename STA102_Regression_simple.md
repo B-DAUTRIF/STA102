@@ -641,7 +641,7 @@ $$
 \frac{A-\alpha}{\frac{\sqrt{\frac{\sigma^{2}}{n}\left(1+\frac{\bar{x}^{2}}{\sum^{n}_{i=1}(x_{i}-\hat{x})^{2}}\right)}}{\sqrt{\frac{\frac{(n-2)S^{2}_{n-2}}{\sigma^{2}}}{(n-2)}}}}
 $$
 
-Où le numérateur suit une loi normale ($\mathcal{N}(0 \ ; \ 1)$), et le dénominateur est la racine d'une loi du $\chi^{2}$ divisée par son degrés de liberté $(n-2)$.
+Où le numérateur suit une loi normale ($\mathcal{N}(0 \space ; \space 1)$), et le dénominateur est la racine d'une loi du $\chi^{2}$ divisée par son degrés de liberté $(n-2)$.
 
 De la même façon, si on note : $S_{B}=\frac{S_{n-2}}{\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}}$
 
@@ -944,6 +944,7 @@ modele_df = as.data.frame(cbind(
   predict(modele, interval = "confidence", level = 0.95)
 ))
 ```
+
 
 
 
