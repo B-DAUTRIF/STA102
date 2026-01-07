@@ -56,6 +56,7 @@ corrplot::corrplot(cor(df))
 Compte tenu de la forme du nuage et données dont on dispose, on décide si on peut appliquer un modèle du type :
 
 $$Y_{i}=\alpha+\beta x_{i}+\epsilon_{i}$$
+
 On créé donc ce modèle puis on affiche sa droite de régression :
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
@@ -320,5 +321,6 @@ ggplot(modele, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blu
   ) + geom_hline(yintercept = 4 / nrow(appartement),
                  colour = "red")
 ```
+
 
 
