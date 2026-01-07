@@ -9,6 +9,7 @@ library(car)
 library(ggplot2)
 library(ggfortify)
 library(lmtest)
+library(olsrr)
 ```
 
 ## Données :
@@ -55,10 +56,7 @@ corrplot::corrplot(cor(df))
 
 Compte tenu de la forme du nuage et données dont on dispose, on décide si on peut appliquer un modèle du type :
 
-Dans l'exemple : 
-
 $$Y_{i}=\alpha+\beta x_{i}+\epsilon_{i}$$
-
 On créé donc ce modèle puis on affiche sa droite de régression :
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
@@ -297,33 +295,8 @@ autoplot(
 )
 ```
 #### Test de normalité de Shapiro-Wilk :
+
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
-
-### Evaluation des leviers : 
-
-```{r Fonctions sur les leviers}
-# Produire un tableau des leviers du modele :
-hatvalues(modele)
-# Fonction primaire d'affichage en barplot des leviers :
-plot(hatvalues(modele),type = 'h')
-```
-
-Graphique des levieres des observations : recherche de points abérrants
-
-```{r Graphique des leviers}
-# Fonction graphique utilisant GGplot pour l'affichage des leviers :
-ggplot(modele, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blue") +
-  labs(x = "Observation", y = "Leverage") + geom_text(
-    label = rownames(appartement),
-    check_overlap = T,
-    vjust = -0.8,
-    size = 3
-  ) + geom_hline(yintercept = 4 / nrow(appartement),
-                 colour = "red")
-```
-
-
-
 
