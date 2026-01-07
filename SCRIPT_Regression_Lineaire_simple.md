@@ -50,8 +50,7 @@ $$R=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{
 Matrice de corrélation : 
 
 $$
-R
-=
+R =
 \begin{pmatrix}
 1      & r_{12} & r_{13} & \cdots & r_{1n} \\
 r_{21} & 1      & r_{23} & \cdots & r_{2n} \\
@@ -318,6 +317,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
