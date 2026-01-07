@@ -115,10 +115,7 @@ abline(modele, col='red')
 $$a=\bar{y}-b\bar{x}$$
 
 $$
-b= \frac{\sum_{i=1}^n x_i(y_i-\bar y)}
-       {\sum_{i=1}^n x_i^2 - n\bar x^2}
-= \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}
-       {\sum_{i=1}^n (x_i-\bar x)^2}
+b= \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n (x_i-\bar x)^2}
 $$
 
 ```{r Rapports sur le modele}
@@ -346,6 +343,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
