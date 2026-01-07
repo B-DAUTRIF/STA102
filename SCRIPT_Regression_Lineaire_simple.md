@@ -14,9 +14,10 @@ library(olsrr)
 
 ## Données :
 
-On Charge les données en sélectionnant les variables pertinentes. On affiche ensuite le nuage de points pour avoir une première intuition de la relation entre $X$ et $Y$ :
+Les données sont chargées puis les variables pertinentes sont sélectionnées. L'affichage du nuage de points donne une première intuition de la relation entre $X$ et $Y$ :
 
 ```{r Chargement et mise en fore des donnees}
+# Chargement du fichier de donnees :
 df <- read.delim("D:/Etudes/2025_2026/STA102/Regression_simple/appartements.txt")
 
 # Extraction des vecteurs de donnees :
@@ -40,7 +41,11 @@ plot(df)
 describe(df)
 ```
 
-### Corrélations : 
+### Corrélation : 
+
+Coefficient de corrélation :
+
+$$r=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})\sum_{i=1}^{n}(y_{i}-\bar{y})}}$$
 
 ```{r Correlations}
 # Formule du calcul du coefficient de correlation r :
@@ -299,4 +304,5 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
