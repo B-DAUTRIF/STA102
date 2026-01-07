@@ -108,6 +108,23 @@ Propriétés :
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
 
+```{r Construction du modele}
+# On construit le modele lineaire de regression simple :
+modele=lm(y~x,data=df)
+
+# Visualisation de la droite de regression :
+plot(y~x,data=df)
+abline(modele, col='red')
+```
+
+### Paramètres du modèle : 
+
+$$a=\bar{y}-b\bar{x}$$
+
+$$
+b= \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n (x_i-\bar x)^2}
+$$
+
 #### Propriétés de $A$ et $B$ :
 
 - **Linéarité** car ils sont combinaisons linéaires des $Y_{i}$ :
@@ -151,23 +168,6 @@ $$Cov(A \ ; \ B)=\frac{-\bar{x}\sigma^{2}}{\Sigma^{n}_{i=1}(x_{i}-\bar{x})^{2}}$
 $$\rho(A \ ; \ B)=\frac{-\bar{x}}{\sqrt{\Sigma^{n}_{i=1}(x_{i}^{2})/n}}$$
 
 - $A$ et $B$ sont des estimateurs de **variance minimale** (théorème de *Gauss-Markov*).
-
-```{r Construction du modele}
-# On construit le modele lineaire de regression simple :
-modele=lm(y~x,data=df)
-
-# Visualisation de la droite de regression :
-plot(y~x,data=df)
-abline(modele, col='red')
-```
-
-### Paramètres du modèle : 
-
-$$a=\bar{y}-b\bar{x}$$
-
-$$
-b= \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n (x_i-\bar x)^2}
-$$
 
 ```{r Rapports sur le modele}
 # Synthese :
@@ -394,6 +394,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
