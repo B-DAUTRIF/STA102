@@ -87,7 +87,17 @@ corrplot::corrplot(cor(df))
 Compte tenu de la forme du nuage et données dont on dispose, on décide si on peut appliquer un modèle du type :
 
 $$Y_{i}=\alpha+\beta x_{i}+\epsilon_{i}$$
+
 On créé donc le modèle et on affiche la droite de régression :
+
+#### Equation de la droite des moindres carrés :
+
+$$\hat{y}=a+bx=\bar{y}-b\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}-r\frac{S_{Y}}{S_{X}}\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}+r\frac{S_{Y}}{S_{X}}(x-\bar{x})$$
+
+Propriétés : 
+
+- La droite des moindres carrés passe par $(\bar{x} \ ; \ \bar{y})$, qui est le centre de gravité du nuage.       
+- Le signe de sa pente est le même que celui de $S_{XY}$.
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
 
@@ -327,6 +337,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
