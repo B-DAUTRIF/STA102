@@ -40,6 +40,8 @@ plot(df)
 describe(df)
 ```
 
+### Corrélations : 
+
 ```{r Correlations}
 # Formule du calcul du coefficient de correlation r :
 # sqrt(cov(y,x)/(var(x)*var(x)))
@@ -57,7 +59,7 @@ corrplot::corrplot(cor(df))
 Compte tenu de la forme du nuage et données dont on dispose, on décide si on peut appliquer un modèle du type :
 
 $$Y_{i}=\alpha+\beta x_{i}+\epsilon_{i}$$
-On créé donc ce modèle puis on affiche sa droite de régression :
+On créé donc le modèle et on affiche la droite de régression :
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
 
@@ -95,7 +97,7 @@ ggplot(df, aes(x = x, y = y)) + geom_point() +
   )
 ```
 
-Remarques : 
+Remarques sur les résultats de l'exemple : 
 
 - L'intercept n'a pas ici de valeur en soi puisqu'il n'est pas envisageable de disposer d'un appartement de $0m^{2}$.          
 - L'écart aux estimations va croissant sur $X$, ce qui laisse supposer un éventuel problème d'**hétéroscédasticité**.          
@@ -108,6 +110,7 @@ Remarques :
 # On affiche les differentes sommes de carres du modele :
 anova(modele)
 ```
+
 ## Intervalles de confiance (IC) :
 
 On vérifie les doutes sur les observations en observant les intervalles de confiance :
@@ -128,11 +131,6 @@ ggplot(appartement, aes(x=Superficie, y=Prix))+ geom_point()+geom_smooth(method=
 ```
 
 Remarque : On remarque un élargissement des IC a mesure que les valeurs s'écartent de $\bar{X}$.
-
-```{r}
-X=as.matrix(x)
-hatmatrix = X %*% solve(t(X)%*%X)%*%t(X)
-```
 
 ## Prédictions :
 
@@ -225,9 +223,9 @@ durbinWatsonTest(modele,alternative = "two.sided")
 
 ```
 
-#### Graphique standards des résidus du modèle :
+### Graphique standards des résidus du modèle :
 
-4 graphiques sont à analyser en priorité concernant les résidus du modèle : 
+4 graphiques de base sont disponibles concernant les résidus du modèle : 
 
 - Résidus ~ esimations
 
@@ -242,7 +240,9 @@ durbinWatsonTest(modele,alternative = "two.sided")
 plot(modele)
 ```
 
-#### Graphique des valeurs absolues des résidus studentisés internes :
+Voire la librairie **OLSRR** pour une liste plus complète d'indicateurs et les graphiques correspondants.
+
+### Graphique des valeurs absolues des résidus studentisés internes :
 
 Recherche l'augmentation de valeurs des résidus.
 
@@ -252,7 +252,7 @@ Recherche l'augmentation de valeurs des résidus.
 autoplot(modele, which = 3, ncol = 1, label.size = 3, label.hjust = -0.8, label.n = 6)
 ```
 
-#### Graphique des résidus studentisés internes :
+### Graphique des résidus studentisés internes :
 
 Elimination de l'échelle pour disposer de valeurs de référence (typiquement $2, \space 2.5$ ou $3$)
 
@@ -294,8 +294,8 @@ autoplot(
   label.n = 6
 )
 ```
-#### Test de normalité de Shapiro-Wilk :
 
+### Test de normalité de Shapiro-Wilk :
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
