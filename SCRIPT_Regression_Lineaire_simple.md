@@ -321,3 +321,4 @@ ggplot(modele, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blu
                  colour = "red")
 ```
 
+
