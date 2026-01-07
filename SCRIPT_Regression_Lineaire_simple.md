@@ -45,7 +45,21 @@ describe(df)
 
 Coefficient de corrélation :
 
-$$r=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})\sum_{i=1}^{n}(y_{i}-\bar{y})}}$$
+$$R=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})\sum_{i=1}^{n}(y_{i}-\bar{y})}}$$
+
+Matrice de corrélation : 
+
+$$
+R
+=
+\begin{pmatrix}
+1      & r_{12} & r_{13} & \cdots & r_{1n} \\
+r_{21} & 1      & r_{23} & \cdots & r_{2n} \\
+r_{31} & r_{32} & 1      & \cdots & r_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+r_{n1} & r_{n2} & r_{n3} & \cdots & 1
+\end{pmatrix}
+$$
 
 ```{r Correlations}
 # Formule du calcul du coefficient de correlation r :
@@ -304,6 +318,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
