@@ -60,6 +60,16 @@ r_{n1} & r_{n2} & r_{n3} & \cdots & 1
 \end{pmatrix}
 $$
 
+Propriétés : 
+
+- $r\in[-1,1]$
+
+**Attention :**
+
+- $X \perp Y \Rightarrow r=0$
+
+- $r=0 \ \nRightarrow X \perp Y$
+
 ```{r Correlations}
 # Formule du calcul du coefficient de correlation r :
 # sqrt(cov(y,x)/(var(x)*var(x)))
@@ -317,6 +327,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
