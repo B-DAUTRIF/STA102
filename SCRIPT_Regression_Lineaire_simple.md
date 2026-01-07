@@ -64,6 +64,13 @@ Propriétés :
 
 - $r\in[-1,1]$
 
+$$
+r = \frac{s_{XY}}{s_X s_Y} \ \Longrightarrow \ 
+s_{XY} = r \times s_X s_Y \ \Longrightarrow \
+\frac{s_{XY}}{s_X} = r \times \frac{s_X s_Y}{s_X} \ \Longrightarrow \ 
+\frac{s_{XY}}{s_X} = r \frac{s_Y}{s_X}
+$$
+
 **Attention :**
 
 - $X \perp Y \Rightarrow r=0$
@@ -100,6 +107,50 @@ Propriétés :
 - Le signe de sa pente est le même que celui de $S_{XY}$.
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
+
+#### Propriétés de $A$ et $B$ :
+
+- **Linéarité** car ils sont combinaisons linéaires des $Y_{i}$ :
+
+$$\delta_{i}=\sum^{n}_{i=1}\frac{(x_{i}-\bar{x})}{\sum^{n}_{i=1}(x_{i}-\bar{x})^{2}}Y_{i.} \ \qquad \Longrightarrow \qquad B=\Sigma^{n}_{i=1}\delta_{i}Y_{i} \qquad et \qquad A=\Sigma^{n}_{i=1}\left(\frac{1}{n}\bar{x}\delta_{i}\right)Y_{i}$$
+
+- Absence de **biais** : 
+
+$$E[\ B \]=E\left[\frac{\sum_{i=1}^{n} (Y_i-\bar Y)(x_i-\bar x)}{\sum_{i=1}^{n}(x_i-\bar x)^{2}}\right]=  \frac{\sum^{n}_{i=1} E[Y_{i}-\bar Y](x_{i}-\bar x )}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}$$
+
+On sait que :
+
+$$E[\ Y_{i} \]=E[\ \alpha+\beta x_{i}+\epsilon_{i} \]=\alpha+\beta x_{i}$$
+
+$$E[\ \bar{Y} \ ]=\frac{1}{n}\Sigma_{i}E[\ Y_{i} \ ]=\frac{1}{n}\Sigma_{i}(\alpha+\beta x_{i})=\alpha+\beta \bar{x}$$
+
+$$\Rightarrow E[\ B \ ]=  E\left[\ \frac{\sum^{n}_{i=1} \beta (x_{i}-\bar{x})(x_{i}-\bar{x})}{\sum^{n}_{i=1}(x_{i}-\bar{x})^{2}} \ \right]=\beta$$
+
+$$
+E[\ A\ ]=E[\ \bar{Y}-\beta\bar{x}\ ]=E[\ Y\ ]-\beta x=(\alpha+\beta x+E[\ \epsilon\ ])-\beta x=\alpha
+$$
+
+On démontre que : 
+
+$$
+V[\ B\ ]=\frac{\sigma^{2}}{nS^{2}_{X}}
+$$
+
+$$
+V[\ A\ ]=\frac{\sigma^{2}}{n}\left(1+\frac{\bar{x}}{S^{2}_{X}}\right)
+$$
+
+Où $\sigma^{2}$ est la variance des résidus et $S_{X}^{2}$ celle de $X$ : $S_{X}=\frac{1}{n}\Sigma_{i}(x_{i}-\bar{x})^{2}$
+
+- **non indépendance** : $A \not\perp B$
+
+On démontre que : 
+
+$$Cov(A \ ; \ B)=\frac{-\bar{x}\sigma^{2}}{\Sigma^{n}_{i=1}(x_{i}-\bar{x})^{2}}$$
+
+$$\rho(A \ ; \ B)=\frac{-\bar{x}}{\sqrt{\Sigma^{n}_{i=1}(x_{i}^{2})/n}}$$
+
+- $A$ et $B$ sont des estimateurs de **variance minimale** (théorème de *Gauss-Markov*).
 
 ```{r Construction du modele}
 # On construit le modele lineaire de regression simple :
@@ -343,6 +394,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
