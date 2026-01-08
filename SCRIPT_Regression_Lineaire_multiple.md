@@ -1,5 +1,5 @@
 ---
-title: 'STA102 : TP_regression_multiple'
+title: 'Régression linéaire multiple'
 output:
   html_document:
 ---
