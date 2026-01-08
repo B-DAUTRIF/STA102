@@ -1,10 +1,7 @@
 ---
 title: 'STA102 : TP_regression_multiple'
-author: "Benjamin DAURIF"
-date: "2025-12-26"
 output:
   html_document:
-    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
