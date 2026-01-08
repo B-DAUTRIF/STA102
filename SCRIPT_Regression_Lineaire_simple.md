@@ -202,10 +202,30 @@ Remarques sur les résultats de l'exemple :
 
 ## Table d'analyse de la variance : 
 
+$$
+SCE=\sum^{n}_{i=1}(\hat{y}_{i}-\bar{y})^{2}
+$$
+
+$$
+SCR=\sum^{n}_{i=1}(y_{i}-\hat{y}_{i})^{2}$$
+$$
+
 ```{r Table analyse de variance}
 # On affiche les differentes sommes de carres du modele :
 anova(modele)
 ```
+#### Coefficient de détermination : 
+
+$$
+R^{2}=\frac{SCE}{SCT}=\frac{\sum^{n}_{i=1}(\hat{y}_{i}-\bar{y})^{2}}{\sum^{n}_{i=1}(y_{i}-\bar{y})^{2}}
+$$
+
+Propriétés : 
+
+- $R^{2}\in [\ 0 \ ; \ 1\ ]$
+- $R^{2}=1 \ \Rightarrow$ liaison parfaite (les observations forment une droite).      
+- $R^{2}=0 \ \Rightarrow$ aucune liaison linéaire.
+- On démontre que $R^{2}$ est égal à la pente des moindres carrés.
 
 ## Intervalles de confiance (IC) :
 
@@ -395,6 +415,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
