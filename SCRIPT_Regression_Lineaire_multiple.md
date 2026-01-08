@@ -1,8 +1,5 @@
 ---
 title: 'Regression_multiple'
-output:
-  html_document:
-    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
