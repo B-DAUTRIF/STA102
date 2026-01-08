@@ -179,7 +179,7 @@ Propriétés :
 
 **Rappel :** $\forall \space i \space : \space \epsilon_{i}\sim \mathcal{N}{(0 \space ;\space \sigma^{2})}$
 
-$$\hat{Y}_{i}=-147.33+26.77x_{i}$$
+$$\hat{Y}_{i}=\alpha +\beta x_{i}$$
 
 ```{r Affichage avance}
 # Fonction d'affichage de la droite de régression utilisant GGPLOT :
@@ -415,6 +415,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
