@@ -1,7 +1,8 @@
 ---
-title: 'Régression linéaire multiple'
+title: 'Regression_multiple'
 output:
   html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -319,15 +320,13 @@ $$t_{i}^{\star}=\frac{y_{i}-\bar{y}_{(-i)}}{\hat{\sigma}_{(-i)}\sqrt{(1-h_{(-i)}
 
 Un résidu studentisé est considéré trop grand typiquement s'il dépasse $2$ (fractile d'ordre $0.95$)
 
+
 ```{r Diagramme des resdisus standardises et studentises}
-
-res = modele_r
-
 # Diagramme des residus studentises :
 fit_res = data.frame(
-  name = names(rstudent(res)),
-  fit = fitted(res),
-  rstud = rstudent(res)
+  name = names(rstudent(modele_r)),
+  fit = fitted(modele_r),
+  rstud = rstudent(modele_r)
 )
 ggplot(fit_res, aes(x = fit, y = rstud)) +
   geom_point() + xlab("Fitted Values") +
@@ -349,8 +348,39 @@ ggplot(fit_res, aes(x = fit, y = rstud)) +
     aes(x = fit, y = rstud, label = name),
     nudge_x = 3
   )
+```
 
-# Diagramme des leviers :
+Retrouver les points déja observés à l'aide d'autres analyse oriente vers la conclusion que ces observations sont abérrantes. 
+
+On doit passer par l'analyse des leviers mais **de toutes façons, observations ne pourront être retirées de l'échantillon qu'après une analyse métier**.
+
+### Etude des leviers :
+
+Le **levier** indique la distance au centre du nuage dans l'espace défini par les variables exogènes. C'est l'élément correspondant à l'observation sur la **diagonale principale de la Hat-matrix** :
+
+Soit $h_{ii}=x_{i}(X^{T}X)^{-1}x_{i}^{T}$, le **levier** de l'observation $i$.
+
+**Rappel :** La matrice $H$ (Hat-matrix) se présente comme suit :
+
+$$
+H =
+\begin{pmatrix}
+h_{11} & h_{12} & \cdots & h_{1n} \\
+h_{21} & h_{22} & \cdots & h_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+h_{n1} & h_{n2} & \cdots & h_{nn}
+\end{pmatrix}_{n\times n}
+$$
+
+Dans la méthode des moindres carrés, les leviers mesurent l'influence d'une observation sur les estimations des coefficients de régression.
+
+Il est généralement considéré haut pour l'observation $i$ si :
+
+$$h_{ii} \geq 2\times \frac{P+1}{n}$$
+
+```{r Etude des leviers}
+# Detection de points aberrants / influents :
+# Etude du levier :
 ggplot(res, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blue") +
   labs(x = "Observation", y = "Leverage") + geom_text(
     label = rownames(df),
@@ -360,56 +390,80 @@ ggplot(res, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blue")
   ) +
   geom_hline(yintercept = 2 * length(coefficients(res)) / nrow(df),
              colour = "red")
+# La liste des leviers est directement sur la diagonale de la matrice H :
+# Il faut recalculer les matrices caracteristiques du model restreint :
+X=as.matrix(cbind(1,modele_r$model))
+H=X%*%solve(t(X)%*%X)%*%t(X)
+# Puis extraire la diagonale de la matrice H :
+leviers_modele_r = diag(H)
 ```
 
-Retrouver les points déja observés à l'aide d'autres analyse oriente vers la conclusion que ces observations sont abérrantes. 
+### Distance de Cook :
 
-On doit passer par l'analyse des leviers mais **de toutes façons, observations ne pourront être retirées de l'échantillon qu'après une analyse métier**.
+Mesure la distance entre le paramètre $\beta_{j}$ calculé avec l'observation $i$ et celle calculée sans cette observation : 
 
-```{r }
-# Detection de points aberrants / influents :
-# Etude du levier :
-ggplot(res, aes(seq_along(.hat), .hat)) + geom_col(width = 0.1, colour = "blue") +
-  labs(x = "Observation", y = "Leverage") + geom_text(
-    label = rownames(ozone),
-    check_overlap = T,
-    vjust = -0.8,
-    size = 3
-  ) +
-  geom_hline(yintercept = 2 * length(coefficients(res)) / nrow(ozone),
-             colour = "red")
+$$D_{i}=\frac{\sum_{i=1}^{n}(\hat{y}_{j}-\hat{y}_{j(-i)})}{\hat{\sigma}^{2}(P+1)}=\frac{h_{ii}\space e_{i}^{2}}{\hat{\sigma}^{2}(P+1)(1-h_{ii})^{2}}$$
 
+Remarque : une distance de *Cook* suppérieur à $1$ est généralement considérée comme anormale, cependant d'autres valeurs de références sont possibles.
+
+
+```{r mesures des leviers}
 # Distance de Cook :temp_1=round(influence.measures(res)$infmat,2)
-ols_plot_cooksd_chart(res)
-ols_plot_cooksd_bar(res)
-
-# Autres mesures : 
-temp_1=round(influence.measures(res)$infmat,2)
-# Labels des colonnes de temp_1 :
-labels(temp_1)[[2]]
-# Exemple de classement du resultat sur un colonne particuliere (ex. distance de cook) :
-temp_1[order(as.data.frame(temp_1)$cook.d,decreasing = T),]
+ols_plot_cooksd_chart(modele_r)
+ols_plot_cooksd_bar(modele_r)
 ```
 
-$$
-X_{n \times p},
-\quad
-(X^\top X)^{-1}_{p \times p},
-\quad
-H_{n \times n} = X_{n \times p} (X^\top X)^{-1}_{p \times p} X^\top_{p \times n}
-$$
+Pour l'interprêtation, on rapproche ces résultats de l'analyse des **résidus studentisés**. Les observations mises en évidence par cette méthode sont candidates à une analyse métier. 
 
-$$
-H = (h_{ij})_{1 \le i,j \le n},
-\qquad
-h_{ij} = x_i^\top (X^\top X)^{-1} x_j
-$$
-$$
-H = X (X^\top X)^{-1} X^\top
-$$
+## Autres mesures de l'influence : 
 
-$$
-H \in \mathbb{R}^{n \times n}, \quad
-X \in \mathbb{R}^{n \times p}, \quad
-X^\top X \in \mathbb{R}^{p \times p}
-$$
+### Covratio :
+
+Mesure la variabilité des estimations lorsqu'on retire une observation : 
+
+$$Covratio = \frac{det\left(\hat{\sigma}^{2}\left(X_{(-i)}^{T}X_{(-i)}\right)^{-1}\right)}{det\left(\hat{\sigma}^{2}\left(X^{T}X\right)^{-1}\right)}$$
+
+Propriétés : 
+
+- $Covratio<1\space :$ l'observation dégrade l'estimation.
+
+- $Covratio>1\space :$ l'observation améliore l'estimation.
+
+- Limite généralement admise pour une observation influente : $\pm\frac{1+3(P+1)}{n}$
+
+### DFBETAS :
+
+Mesure standardisée de la différence entre l'estimation de $\beta_{j}$ avec et sans l'observation :
+
+$$DFBETAS_{ij}=\frac{b_{j}-b_{j(-i)}}{\hat{\sigma}_{(-i)}^{2}\left(X^{T}X\right)_{(j+1),(j+1)}^{-1}}$$
+
+Considérée importante pour : $|DFBETAS_{ij}|\geq \frac{2}{\sqrt{n}}$
+
+### DFFITS :
+
+Mesure standardisée de la distance entre les estimations $\hat{Y}$, avec et sans l'observation : 
+
+$$DFFITS_{i}=\frac{\left(\hat{Y}_{i}-\hat{Y}_{i}(-i )\right)}{\hat{\sigma}_{(-i)}\sqrt{h_{ii}}}$$
+
+Considérée importante pour : $|DFFITS_{i}|\geq 2\sqrt{\frac{(P+1)}{n}}$
+
+```{r Autres mesures des influences}
+# Autres mesures : 
+Influences_modele_r=round(influence.measures(modele_r)$infmat,2)
+# Labels des colonnes de temp_1 :
+labels(Influences_modele_r)[[2]]
+# Exemple de classement du resultat sur un colonne particuliere (ex. distance de cook) :
+Influences_modele_r[order(as.data.frame(Influences_modele_r)$cook.d,decreasing = T),]
+```
+
+En rapprochant ces observations des autres faites précédement, on a une idée précise de l'influence de chaque observation sur les estimation des paramètres, des prédictions et de l'évolution de la variance.
+
+## Références :
+
+• Pierre-André Cornillon, Eric Matzner-Løber (2011). Régression avec R, Springer
+
+• F. Housson (2018). R pour la statistique et la science des données (2ème ed.), PUR
+
+• Ricco Rakotomalala. Pratique de la Régression Linéaire Multiple. Diagnostic et sélection de variables,
+https://eric.univ-lyon2.fr/~ricco/cours/cours/La_regression_dans_la_pratique.pdf.
+20
