@@ -169,7 +169,8 @@ Confint(modele)
 
 #### Equation de la droite des moindres carrés :
 
-$$\hat{y}=a+bx=\bar{y}-b\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}-r\frac{S_{Y}}{S_{X}}\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}+r\frac{S_{Y}}{S_{X}}(x-\bar{x})$$
+$$\hat{y}=a+bx=\bar{y}-b\bar{x}+r\frac{S_{Y}}{S_{X}}x=\bar{y}-r\frac{S_{Y}}{S_{X}}\bar{x}+r\frac{S_{Y}}{S_{X}}x$$
+$$=\bar{y}+r\frac{S_{Y}}{S_{X}}(x-\bar{x})$$
 
 Propriétés : 
 
@@ -394,6 +395,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
