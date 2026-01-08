@@ -231,6 +231,14 @@ Propriétés :
 
 On vérifie les doutes sur les observations en observant les intervalles de confiance :
 
+$$
+IC_{n-2 \ ; \ (1-\gamma/2)}=\left[A -t_{n-2 \ ; 1-\gamma/2}\times \hat{\sigma}_{A} \quad ; \quad A +t_{n-2 \ ; 1-\gamma/2}\times \hat{\sigma}_{A} \right]
+$$
+
+$$
+IC_{n-2 \ ; \ (1-\gamma/2)}=\left[B -t_{n-2 \ ; 1-\gamma/2}\times \hat{\sigma}_{B} \quad ; \quad B +t_{n-2 \ ; 1-\gamma/2}\times \hat{\sigma}_{B} \right]
+$$
+
 ```{r Intervalles de Confiance}
 # Creation d'un jeu de donnees incluant les predictions et les
 # intervalles de confiance :
@@ -240,6 +248,10 @@ IC = as.data.frame(cbind(df, predict(
 ```
 
 Puis on affiche les IC sur la droite de régression :
+
+$$
+IC_{1-\gamma} \quad E[\ Y|x_{i}\ ]=\left[\ \hat{y}_{i} \ -\mathcal{T}_{n-2 \ ; \ (1-\gamma/2)} \times \hat{\sigma}\sqrt{h_{i}} \quad ;\quad \hat{y}_{i} \ +\mathcal{T}_{n-2 \ ; \ (1-\gamma/2)} \times \hat{\sigma}\sqrt{h_{i}} \ \right]
+$$
 
 ```{r Droite de regression avec IC}
 # Affichage de la droite de regression avec IC :
@@ -415,6 +427,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
