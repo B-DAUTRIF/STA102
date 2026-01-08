@@ -213,7 +213,7 @@ Liste_CI = labels(modele$terms)[index(eigen_cindex_modele[which(eigen_cindex_mod
 
 ### Best Subset Regression : 
 
-Méthode automatisée **ascendante exhaustive** de sélection des variables, par comparaison systématique des différents modèles emboités parcourus par l'algrithme. 
+- Méthode automatisée **ascendante exhaustive** de sélection des variables, par comparaison systématique des différents modèles emboités parcourus par l'algrithme. 
 
 ```{r Methode ascendante exhaustive de selection des variables}
 # Sélection exhaustive ascendante des variables :
@@ -223,7 +223,7 @@ bsr = ols_step_best_subset(modele)
 plot(bsr)
 ```
 
-### Best Subset Regression : méthode **pas-à-pas  descendante exhaustive**, avec ici aussi une comparaison systématique des différents modèles parcourus par l'algrithme. 
+- méthode **pas-à-pas  descendante exhaustive**, avec ici aussi une comparaison systématique des différents modèles parcourus par l'algrithme. 
 
 ```{r Methode pas a pas descendante de selection des variables}
 # Sélection pas a pas descendante de variables :
