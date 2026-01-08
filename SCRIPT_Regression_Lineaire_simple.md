@@ -195,10 +195,10 @@ ggplot(df, aes(x = x, y = y)) + geom_point() +
 
 Remarques sur les résultats de l'exemple : 
 
-- L'intercept n'a pas ici de valeur en soi puisqu'il n'est pas envisageable de disposer d'un appartement de $0m^{2}$.          
-- L'écart aux estimations va croissant sur $X$, ce qui laisse supposer un éventuel problème d'**hétéroscédasticité**.          
-- Certaines observations ($18,25,6,4$) montrent un résidu important. On doit supposer (et vérifier) des observations abérrantes.          
-- Une observation ($16$) montre une valeur de $X$ particulièrement grande. La question se posera de sa pertinence ou d'une observation abérrante.          
+- L'**intercept** n'a pas obligatoirement de valeur en soi puisqu'il n'est pas possible d'envisager une valeur nulle de la variable.          
+- Si l'**écart aux estimations** va (dé)croissant sur $X$, cela peut laisser supposer un problème d'**hétéroscédasticité**.          
+- Si certaines observations montrent un **résidu important**, on doit supposer des observations abérrantes.          
+- Si une observation montre une **valeur de $X$** particulièrement grande, la question se pose de sa pertinence dans le modèle ou d'une observation abérrante.          
 
 ## Table d'analyse de la variance : 
 
@@ -395,6 +395,7 @@ autoplot(
 ```{r Test Shapiro Wilk}
 shapiro.test(residuals(modele))
 ```
+
 
 
 
